@@ -1,0 +1,44 @@
+body {
+  background-image: url('./assets/boxs/background-2.jpg');
+}
+
+nav{ 
+  padding: 10px 20px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+nav a{
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  font-size: 37px;
+  margin: 0 15px;
+  transition: color 0.3s ease;
+}
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 20px;
+  justify-items: center;
+}
+
+.item {
+  background: #0c0000;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.2s ease-in-out;
+  max-width: 500px;
+  max-height: 327px;
+}
+
+.gallery .item:hover {
+  transform: scale(1.05);
+}
+
+.product-image {
+  display: block;
+  object-fit: cover;
+  max-width: 500px;
+  max-height: 327px;
+}
