@@ -3,11 +3,66 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ecommerce Test</title>
+  <title>PokemaniaStore</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
+  <svg xmlns="http://www.w3.org/2000/svg" class="hidden">
+    <symbol id="bars" viewBox="0 0 512 512">
+      <path d="M178.42,118.37h155.15c16.07,0,29.09-7.39,29.09-16.52s-13.02-16.52-29.09-16.52H178.42c-16.07,0-29.09,7.39-29.09,16.52s13.02,16.52,29.09,16.52Zm155.15,121.12H178.42c-16.07,0-29.09,7.39-29.09,16.52s13.02,16.52,29.09,16.52h155.15c16.07,0,29.09-7.39,29.09-16.52s-13.02-16.52-29.09-16.52Zm0,154.15H178.42c-16.07,0-29.09,7.39-29.09,16.52s13.02,16.52,29.09,16.52h155.15c16.07,0,29.09-7.39,29.09-16.52s-13.02-16.52-29.09-16.52Z"></path>
+    </symbol>
+    <symbol id="search" viewBox="0 0 512 512">
+     <path d="M94.72,168.01c28.98-69.58,96.87-114.98,172.24-115.18,81.23-.43,153.46,51.6,178.79,128.79,25.32,77.19-2.05,161.9-67.75,209.67-65.7,47.77-154.72,47.7-220.34-.18l-58.51,58.51c-5.95,5.94-15.59,5.94-21.54,0-5.94-5.95-5.94-15.59,0-21.54l56.69-56.69c-52.95-53.64-68.55-133.81-39.57-203.39Zm27.17,132.06c24.33,58.63,81.6,96.82,145.08,96.73v-.81c86.15-.11,156.09-69.69,156.65-155.84,.08-63.48-38.11-120.75-96.73-145.08-58.63-24.33-126.14-10.92-171.03,33.96-44.89,44.89-58.29,112.4-33.96,171.03Z"></path>
+    </symbol>
+    <symbol id="user" viewBox="0 0 512 512">
+      <path d="M417.69,356.48l5.12,24.32c4.85,21.03,.06,43.12-13.06,60.25s-33.21,27.5-54.78,28.28H157c-21.56-.78-41.65-11.16-54.78-28.28-13.12-17.13-17.92-39.22-13.06-60.25l5.12-24.32c5.89-32.92,34.19-57.12,67.63-57.81h188.16c33.44,.7,61.74,24.89,67.63,57.81Zm-62.72,80.64c10.83-.13,21.03-5.14,27.73-13.65v.21c8.23-10.32,11.43-23.77,8.75-36.69l-5.12-24.32c-2.84-18.02-18.04-31.52-36.27-32.21H161.9c-18.23,.7-33.43,14.19-36.27,32.21l-5.12,24.32c-2.62,12.86,.58,26.21,8.75,36.48,6.71,8.51,16.9,13.53,27.73,13.65h197.97Zm-88.32-181.12h-21.33c-47.13,0-85.33-38.2-85.33-85.33v-56.32c-.06-19.03,7.48-37.29,20.93-50.75,13.46-13.45,31.72-20.99,50.75-20.93h48.64c19.03-.06,37.29,7.48,50.75,20.93,13.45,13.45,20.99,31.72,20.93,50.75v56.32c0,47.13-38.21,85.33-85.33,85.33Zm-34.99-181.33c-21.92,0-39.68,17.77-39.68,39.68v56.32c0,29.46,23.88,53.33,53.33,53.33h21.33c29.45,0,53.33-23.88,53.33-53.33v-56.32c0-10.52-4.18-20.62-11.62-28.06-7.44-7.44-17.53-11.62-28.06-11.62h-48.64Z"></path>
+    </symbol>
+    <symbol id="cart" viewBox="0 0 512 512">
+      <path d="M463.54,164.66c-14.69-16.9-35.96-26.65-58.35-26.75H151.58l-4.87-16.78c-9.79-32.25-39.24-54.54-72.94-55.2l-1.22-.24h-24.31c-10.08,0-18.24,8.16-18.24,18.24s8.16,18.24,18.24,18.24h24.31c18.41,.16,34.43,12.59,39.15,30.4l61.51,207.4c9.93,32.68,40.01,55.07,74.16,55.2h142.97c38.89-.42,71.5-29.5,76.35-68.08l14.59-100.66c3.39-22.19-3.1-44.76-17.75-61.76h0Zm-18.24,57.14l-14.59,100.9c-3.19,19.87-20.24,34.56-40.36,34.77H247.38c-18.06,0-33.99-11.86-39.15-29.18l-45.72-154.15h243.14c11.91,.18,23.15,5.56,30.76,14.73,7.61,9.16,10.86,21.19,8.87,32.93h.01Zm-179.2,226.85c0,13.43-10.88,24.31-24.31,24.31s-24.31-10.88-24.31-24.31,10.88-24.31,24.31-24.31,24.31,10.88,24.31,24.31Zm145.89,0c0,13.43-10.88,24.31-24.31,24.31s-24.31-10.88-24.31-24.31,10.88-24.31,24.31-24.31,24.31,10.88,24.31,24.31Z"></path>
+    </symbol>
+  </svg>
+  <div class="head-logo-row">
+    <div class="container-head">
+      <div class="row">
+        <div class="menu-mobile">
+          <a href="#" class="btn-menu" data-toggle="#nav-hamburger" aria-label="Menú" data-component="menu-button">
+            <svg><use xlink:href="#bars"></use></svg>
+          </a>
+        </div>
+        <div class="search-col">
+          <form class="search-form" action="/search/" method="get">
+            <input type="search" name="q" placeholder="Buscar" aria-label="Buscar" class="search-input">
+            <button type="submit" class="search-btn" aria-label="Buscar">
+              <svg class="icon">
+                <use href="#search"></use>
+              </svg>
+            </button>
+          </form>
+        </div>
+        <div class="logo-col">
+          <div class="logo">
+            <a href="#" title="Pokemania">
+              <img src="/assets/boxs/pokelogob.png" 
+                  alt="Pokemania" class="logo-img">
+            </a>
+          </div>
+        </div>
+        <div class="actions-col">
+          <div class="user-col">
+            <a href="/account/login/" class="btn-user">
+              <svg><use xlink:href="#user"></use></svg>
+            </a>
+          </div>
+          <div class="cart-col">
+            <a href="#" data-toggle="#modal-cart" data-modal-url="modal-fullscreen-cart" class="btn-cart">
+              <svg><use xlink:href="#cart"></use></svg>
+              <span class="cart-badge">0</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   <header>
     <h1>header</h1> 
     <nav>
@@ -15,43 +70,10 @@
       <a href="#">Productos</a>
       <a href="#">Contacto</a>
     </nav>
-  </header>  
+  </header>
+  <main>
 
-  <main class="container">
-    <section class="gallery">
-        <div class="item">
-            <a href="producto1.html">
-            <img src="./assets/boxs/trainer-box-lucario.png" alt="Producto 1" class="product-image">
-            </a>
-        </div>
-        <div class="item">
-            <a href="producto2.html">
-            <img src="./assets/boxs/trainer-box-charizard.png" alt="Producto 2" class="product-image">
-            </a>
-        </div>
-        <div class="item">
-            <a href="producto3.html">
-            <img src="./assets/boxs/trainer-box-gengar.png" alt="Producto 3" class="product-image">
-            </a>
-        </div>
-        <div class="item">
-            <a href="producto4.html">
-            <img src="./assets/boxs/trainer-box-iniciales-1.png" alt="Producto 4" class="product-image">
-            </a>
-        </div>
-        <div class="item">
-            <a href="producto5.html">
-            <img src="./assets/boxs/trainer-box-mewtwo.png" alt="Producto 5" class="product-image">
-            </a>
-        </div>
-        <div class="item">
-            <a href="producto6.html">
-            <img src="./assets/boxs/trainer-box-pikachu.png" alt="Producto 6" class="product-image">
-            </a>
-        </div>
-    </section>
-  </main>
-
+  </main>  
   <footer>
     <p>footer</p>
   </footer>
