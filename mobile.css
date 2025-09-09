@@ -33,4 +33,40 @@
   .logo-col {
     max-width: 100%;
   }
+  .products-slid {
+    margin: 0px;
+    padding: 0px;
+    scroll-snap-type: x mandatory;
+    justify-content: flex-start;
+    gap: 4px
+  }
+  .product {
+  flex: 0 0 calc(33.33% - 12px);
+  max-width: calc(33.33% - 12px);
+  }
+
+  .product-name {
+    font-size: var(--font-size-mobile-large);
+  }
+
+
+  .product-prices {
+    margin-bottom: 8px;
+  }
+
+  .price-current {
+    font-size: var(--font-size-mobile-large);
+    font-weight: bold;
+  }
+
+  .price-old {
+    font-size: var(--font-size-mobile-base);
+    margin-right: 4px;
+  }
+
+  .discount {
+    font-size: var(--font-size-mobile-small);
+    font-weight: 600;
+  }
+
 }
