@@ -1,20 +1,28 @@
 :root{
-  --font-size-mobile-base: 12px;
-  --font-size-mobile-large: 14px;
-  --font-size-mobile-small: 10px;
+  --font-size-mobile-base: 10px;
+  --font-size-mobile-large: 12px;
+  --font-size-mobile-small: 8px;
 }
-@media (max-width: 430px) {
+@media (max-width: 500px) {
   nav {
     display: none; 
     flex-direction: column;
-    background-color:transparent;
+    background-color: rgb(233, 84, 84);
     position: relative;
-    top: -168px; 
+    top: 84px; 
     padding: 10px;
+    left: 9px;
+    position: fixed;
+    z-index: 9999;
+    height: 88px;
+    border-radius: 15px;
   }
 
   nav.active {
     display: flex;
+  }
+  nav a{
+    font-weight: bold;
   }
 
   .menu-mobile {
@@ -33,12 +41,16 @@
   .logo-col {
     max-width: 100%;
   }
+  .sec-productos{
+    padding: 0;
+  }
   .products-slid {
-    margin: 0px;
-    padding: 0px;
+    margin: 24px 6px 0 6px;
     scroll-snap-type: x mandatory;
     justify-content: flex-start;
-    gap: 4px
+    gap: 4px;
+    max-width: 100%;
+    
   }
   .product {
   flex: 0 0 calc(33.33% - 12px);
@@ -48,7 +60,6 @@
   .product-name {
     font-size: var(--font-size-mobile-large);
   }
-
 
   .product-prices {
     margin-bottom: 8px;
@@ -68,5 +79,18 @@
     font-size: var(--font-size-mobile-small);
     font-weight: 600;
   }
-
+  .btn-buy {
+    font-size:var(--font-size-mobile-base)
+  }
+  .sect-slider{
+    padding:0;
+  }
+  .slider {
+    max-width: 100%;
+    padding-left: 0;
+  }
+  .btn-left, .btn-right{
+    display: none;
+  }
+  
 }
