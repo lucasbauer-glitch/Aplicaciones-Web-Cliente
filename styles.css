@@ -5,6 +5,9 @@
   --font-size-large: 20px;
   --font-size-small: 12px;
   --font-color-input: #ffffff;
+  --font-size-tittle: 28px;
+  --font-family-base: 'Arial', 'sans-serif';
+  --font-family-tittle: 'sans-serif', 'Arial';
 }
 
 .hidden {
@@ -12,7 +15,7 @@
 } 
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: var(--font-family-base);
   margin: 0;
 }
 
@@ -138,7 +141,14 @@ footer{
   padding: 10px;
   justify-items: center;
 }
-
+.tittle-prd{
+  font-family: var(--font-family-tittle);
+  text-align: center;
+  font-size: var(--font-size-tittle);
+  margin: 12px 0;
+  color: #333;
+  font-weight: 600;
+}
 /* Contenedor de productos */
 .sect-productos {
   display: flex;
