@@ -114,6 +114,15 @@
                     <span class="price-current-description">$12.325,00</span>
                     <span class="discount">DESCUENTAZOO !15% OFF</span>
                     <span class="price-old">$14.500,00</span>
+                    <form id="product-form" method="post" action="/comprar/">
+                        <input type="hidden" name="add_to_cart" value="${product.id}">
+                        <div class="quantity">
+                        <button type="button" class="quantity-decrease">-</button>
+                        <input type="number" name="quantity" value="1" min="1">
+                        <button type="button" class="quantity-increase">+</button>
+                        </div>
+                        <input type="submit" value="Agregame al carrito raton" class="btn-add-to-cart">
+                    </form>
                 </div>
             </div>
         </section>
