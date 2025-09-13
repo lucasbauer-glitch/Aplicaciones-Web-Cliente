@@ -119,7 +119,7 @@ body {
   display: none;
 }
 
-nav {
+.head-nav {
   display: flex;
   gap: 20px;
   justify-content: center;
@@ -365,7 +365,7 @@ input#slide3:checked ~ .navigation label[for="slide3"] {
     font-size: 20px;
   }
 }
-/*Container y filas */
+/*description html*/
 .container-description {
   max-width: 1200px;
   margin: 0 auto;
@@ -422,7 +422,7 @@ input#slide3:checked ~ .navigation label[for="slide3"] {
 
 .breadcrumbs {
   font-size: var(--font-size-base);
-  color:var(--font-color-input);
+  color: #020202;
 }
 
 
@@ -430,13 +430,48 @@ input#slide3:checked ~ .navigation label[for="slide3"] {
   display: flex;
   gap: 6px;
   align-items: baseline;
+  flex-direction: column;
 }
 
 .price-current-description {
   font-weight: bold;
   color: var(--font-color-current-price);
-  margin-right: 4px
+  margin-right: 4px;
+  font-size: var(--font-size-large);
+}
+#product-form{
+  display: flex;
+  align-items: center;
+}
+.quantity{
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  width: 80px;
+  padding: 6px 12px;
+}
+.quantity input {
+  width: 30px;
+  font-size: var(--font-size-base);
+  text-align: center;
+  border: none;
 }
 
+.quantity button {
+  cursor: pointer;
+}
+.quantity-decrease, .quantity-increase {
+  border: none;
+  background-color: transparent;
+  font-size: var(--font-size-large);
+}
 
+.btn-add-to-cart {
+  background-color: var(--header-background);
+  width: 100%;
+  color: white;
+  border: none;
+  padding: 12px 15px;
+  cursor: pointer;
+}
 
