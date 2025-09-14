@@ -4,7 +4,7 @@
   --font-size-mobile-small: 8px;
 }
 @media (max-width: 500px) {
-  nav {
+  .head-nav {
     display: none; 
     flex-direction: column;
     background-color: rgb(233, 84, 84);
@@ -18,10 +18,10 @@
     border-radius: 15px;
   }
 
-  nav.active {
+  .head-nav.active {
     display: flex;
   }
-  nav a{
+  .head-nav a{
     font-weight: bold;
   }
 

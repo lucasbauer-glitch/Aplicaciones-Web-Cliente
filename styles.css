@@ -127,13 +127,13 @@ body {
   height: 32px;
 }
 
-nav a{
+.head-nav a{
   text-decoration: none;
   color: var(--font-color-input);
   transition: color 0.3s ease;
 }
 
-nav a:hover {
+.head-nav a:hover {
   color: #131212;;
 }
 footer{
@@ -333,7 +333,7 @@ input#slide3:checked ~ .navigation label[for="slide3"] {
 
 /*Tablet */
 @media (min-width: 501px) and (max-width: 1023px) {
-  nav {
+  .head-nav {
     gap: 12px;
     height: auto;
   }

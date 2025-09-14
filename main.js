@@ -1,7 +1,7 @@
-//ocultar el nav bar en mobile
+// ocultar el nav bar en mobile
 document.addEventListener("DOMContentLoaded", () => {
   const btnMenu = document.querySelector(".btn-menu");
-  const nav = document.querySelector("nav");
+  const nav = document.querySelector(".head-nav");
 
   btnMenu.addEventListener("click", (e) => {
     e.preventDefault();
@@ -9,74 +9,17 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-//productos
-const products = [
-  {
-    link: "https://www.shibuyacomicstore.com.ar/productos/pokemon-booster-pack-sv-journey-together-ingles-arte-aleatorio/",
-    title: "Pokémon Booster Pack S&V Surging Sparks Inglés (Arte Aleatorio)",
-    img: "https://acdn-us.mitiendanube.com/stores/001/989/991/products/327px-sv8_booster_pikachu-2c0ce094f7dff2d2ba17398482200736-1024-1024.webp",
-    priceCurrent: "$7.650,00",
-    priceOld: "$8.500,00",
-    discount: "-10% OFF",
-    productId: "199652512"
-  },
-  {
-    link: "https://www.shibuyacomicstore.com.ar/productos/pokemon-booster-pack-sv-journey-together-ingles-arte-aleatorio/",
-    title: "Pokémon Booster Pack S&V Obsidian Flames Inglés (Arte Aleatorio)",
-    img: "https://acdn-us.mitiendanube.com/stores/001/989/991/products/pokemon_tcg_scarlet_violetobsid-dd8fdb7a4964322d0a17451143424423-1024-1024.png",
-    priceCurrent: "$7.650,00",
-    priceOld: "$8.500,00",
-    discount: "-10% OFF",
-    productId: "199652512"
-  },
-  {
-  link: "https://www.shibuyacomicstore.com.ar/productos/pokemon-booster-pack-sv-journey-together-ingles-arte-aleatorio/",
-  title: "Pokémon Booster Pack S&V Obsidian Flames Inglés (Arte Aleatorio)",
-  img: "https://acdn-us.mitiendanube.com/stores/001/989/991/products/pokemon_tcg_scarlet_violetobsid-2-11e0a9ba4c6917720617451143453318-1024-1024.png",
-  priceCurrent: "$7.650,00",
-  priceOld: "$8.500,00",
-  discount: "-10% OFF",
-  productId: "199652512"
-  },
-  {
-    link: "https://www.shibuyacomicstore.com.ar/productos/pokemon-booster-pack-sv-journey-together-ingles-arte-aleatorio/",
-    title: "Pokémon Booster Pack Sleeved S&V Stellar Crown Inglés (Arte Aleatorio)",
-    img: "https://acdn-us.mitiendanube.com/stores/001/989/991/products/pokemon_tcg_scarlet_violetparad-e4f5254e03feca6b0217398502377050-1024-1024.webp",
-    priceCurrent: "$7.650,00",
-    priceOld: "$8.500,00",
-    discount: "-10% OFF",
-    productId: "199652512"
-  },
-  {
-    link: "https://www.shibuyacomicstore.com.ar/productos/pokemon-booster-pack-sv-journey-together-ingles-arte-aleatorio/",
-    title: "Pokémon Booster Pack S&V Obsidian Flames Inglés (Arte Aleatorio)",
-    img: "https://acdn-us.mitiendanube.com/stores/001/989/991/products/pokemon_tcg_scarlet_violetobsid-dd8fdb7a4964322d0a17451143424423-1024-1024.png",
-    priceCurrent: "$7.650,00",
-    priceOld: "$8.500,00",
-    discount: "-10% OFF",
-    productId: "199652512"
-  },
-  {
-  link: "https://www.shibuyacomicstore.com.ar/productos/pokemon-booster-pack-sv-journey-together-ingles-arte-aleatorio/",
-  title: "Pokémon Booster Pack S&V Obsidian Flames Inglés (Arte Aleatorio)",
-  img: "https://acdn-us.mitiendanube.com/stores/001/989/991/products/pokemon_tcg_scarlet_violetobsid-2-11e0a9ba4c6917720617451143453318-1024-1024.png",
-  priceCurrent: "$7.650,00",
-  priceOld: "$8.500,00",
-  discount: "-10% OFF",
-  productId: "199652512"
-  }
-];
-
-function Product({ link, title, img, priceCurrent, priceOld, discount, productId }) {
+// función que genera el HTML de cada producto
+function Product({ title, images, priceCurrent, priceOld, discount, id }) {
   return `
     <div class="product">
       <div class="product-image">
-        <a href="${link}" title="${title}">
-          <img src="${img}" alt="${title}" width="400" height="591">
+        <a href="description.html?id=${id}" title="${title}">
+          <img src="${images[0]}" alt="${title}" width="400" height="591">
         </a>
       </div>
       <div class="product-info">
-        <a href="${link}">
+        <a href="description.html?id=${id}">
           <h3 class="product-name">${title}</h3>
         </a>
         <div class="product-prices">
@@ -86,7 +29,7 @@ function Product({ link, title, img, priceCurrent, priceOld, discount, productId
         </div>
         <div class="product-action">
           <form method="post" action="/comprar/">
-            <input type="hidden" name="add_to_cart" value="${productId}">
+            <input type="hidden" name="add_to_cart" value="${id}">
             <button type="submit" class="btn-buy">Comprar</button>
           </form>
         </div>
@@ -110,5 +53,3 @@ document.addEventListener("DOMContentLoaded", () => {
     container.scrollBy({ left: 300, behavior: "smooth" });
   });
 });
-
-
