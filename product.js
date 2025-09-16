@@ -68,3 +68,22 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("product-container").innerHTML = "<p>Producto no encontrado</p>";
   }
 });
+
+//botones e input de cantidad
+document.addEventListener("DOMContentLoaded", () => {
+  const quantity = document.querySelector(".quantity");
+  const btnDecrease = quantity.querySelector(".quantity-decrease");
+  const inputQuantity= quantity.querySelector("input[name=quantity]");
+  const btnIncrease = quantity.querySelector(".quantity-increase");
+
+  btnDecrease.addEventListener("click", () => {
+    if(parseInt(inputQuantity.value) > parseInt(inputQuantity.min))
+    inputQuantity.value = parseInt(inputQuantity.value) - 1;
+  })
+
+  btnIncrease.addEventListener("click", () => {
+    inputQuantity.value = parseInt(inputQuantity.value) + 1
+  })
+
+});
+ 
