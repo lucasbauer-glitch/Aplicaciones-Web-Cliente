@@ -3,6 +3,9 @@ const products = [
     link: "https://www.shibuyacomicstore.com.ar/productos/pokemon-booster-pack-sv-journey-together-ingles-arte-aleatorio/",
     title: "Pokémon Booster Pack S&V Surging Sparks Inglés (Arte Aleatorio)",
     images: [
+       "https://acdn-us.mitiendanube.com/stores/001/989/991/products/327px-sv8_booster_pikachu-2c0ce094f7dff2d2ba17398482200736-1024-1024.webp",
+       "https://acdn-us.mitiendanube.com/stores/001/989/991/products/327px-sv8_booster_pikachu-2c0ce094f7dff2d2ba17398482200736-1024-1024.webp",
+       "https://acdn-us.mitiendanube.com/stores/001/989/991/products/pokemon_tcg_scarlet_violetobsid-dd8fdb7a4964322d0a17451143424423-1024-1024.png",
        "https://acdn-us.mitiendanube.com/stores/001/989/991/products/327px-sv8_booster_pikachu-2c0ce094f7dff2d2ba17398482200736-1024-1024.webp"
       ],
     priceCurrent: "$7.650,00",
