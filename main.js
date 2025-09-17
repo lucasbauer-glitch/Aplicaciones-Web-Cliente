@@ -28,7 +28,7 @@ function Product({ title, images, priceCurrent, priceOld, discount, id }) {
           <span class="discount">${discount}</span>
         </div>
         <div class="product-action">
-          <form method="post" action="/comprar/">
+          <form class="product-form" data-id="${id}" method="post">
             <input type="hidden" name="add_to_cart" value="${id}">
             <button type="submit" class="btn-buy">Comprar</button>
           </form>
@@ -52,4 +52,6 @@ document.addEventListener("DOMContentLoaded", () => {
   btnRight.addEventListener("click", () => {
     container.scrollBy({ left: 300, behavior: "smooth" });
   });
+  const forms = document.querySelectorAll(".product-form");
+  forms.forEach(addToCartHandler);
 });

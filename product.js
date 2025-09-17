@@ -31,7 +31,7 @@ function renderProductDescription(product) {
               <span class="price-current-description">${product.priceCurrent}</span>
             </div>
             <div class="container-form">
-              <form id="product-form" method="post" action="/comprar/">
+              <form id="product-form" data-id="${product.id}" method="post" action="/comprar/">
                 <div class="quantity">
                   <button type="button" class="quantity-decrease">-</button>
                   <input type="number" name="quantity" value="1" min="1">
@@ -84,6 +84,6 @@ document.addEventListener("DOMContentLoaded", () => {
   btnIncrease.addEventListener("click", () => {
     inputQuantity.value = parseInt(inputQuantity.value) + 1
   })
-
+  const form = document.getElementById("product-form");
+  addToCartHandler(form);
 });
- 
