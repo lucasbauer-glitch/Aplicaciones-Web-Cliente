@@ -36,7 +36,24 @@ document.addEventListener("DOMContentLoaded", () => {
       <button id="btn-clear">Vaciar carrito</button>
     `;
 
+    document.querySelectorAll(".btn-remove").forEach(btn => {
+        btn.addEventListener("click", (e) => {
+          const index = e.target.dataset.index;
+          cart.splice(index, 1);
+          localStorage.setItem("cart", JSON.stringify(cart))
+          renderCart();
+          updateCartBadge();
+        });
+      });
+    const btnClear = document.getElementById("btn-clear")
+    if(btnClear){
+      btnClear.addEventListener("click", () =>{
+        cart = [];
+        localStorage.setItem("cart",JSON.stringify(cart));
+        renderCart();
+        updateCartBadge();
+      })
+    }
   }
-
   renderCart();
 });

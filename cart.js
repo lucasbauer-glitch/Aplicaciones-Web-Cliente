@@ -1,9 +1,13 @@
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
+
 function updateCartBadge() {
   const badge = document.querySelector(".cart-badge");
   if (!badge) return;
-  const totalQuantity = cart.reduce((sum, item) => sum + item.quantity, 0);
+
+  const currentCart = JSON.parse(localStorage.getItem("cart")) || [];
+  const totalQuantity = currentCart.reduce((sum, item) => sum + item.quantity, 0);
+
   badge.textContent = totalQuantity;
 }
 
