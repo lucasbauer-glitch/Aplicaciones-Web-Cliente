@@ -123,4 +123,7 @@
     padding: 10px;
     font-size: 14px;
   }
+  .cart-item h4 {
+    max-width: 280px;
+  }
 }
