@@ -8,8 +8,8 @@ const products = [
        "https://acdn-us.mitiendanube.com/stores/001/989/991/products/pokemon_tcg_scarlet_violetobsid-dd8fdb7a4964322d0a17451143424423-1024-1024.png",
        "https://acdn-us.mitiendanube.com/stores/001/989/991/products/327px-sv8_booster_pikachu-2c0ce094f7dff2d2ba17398482200736-1024-1024.webp"
       ],
-    priceCurrent: "$7.650,00",
-    priceOld: "$8.500,00",
+    priceCurrent: "7650.00",
+    priceOld: "8500.00",
     discount: "-10% OFF",
     id: "199652512"
   },
@@ -19,8 +19,8 @@ const products = [
     images: [
       "https://acdn-us.mitiendanube.com/stores/001/989/991/products/pokemon_tcg_scarlet_violetobsid-dd8fdb7a4964322d0a17451143424423-1024-1024.png"
       ],
-    priceCurrent: "$7.650,00",
-    priceOld: "$8.500,00",
+    priceCurrent: "7650.00",
+    priceOld: "8500.00",
     discount: "-10% OFF",
     id: "199652513"
   },
@@ -30,8 +30,8 @@ const products = [
     images: [
        "https://acdn-us.mitiendanube.com/stores/001/989/991/products/pokemon_tcg_scarlet_violetobsid-2-11e0a9ba4c6917720617451143453318-1024-1024.png"
     ],
-    priceCurrent: "$7.650,00",
-    priceOld: "$8.500,00",
+    priceCurrent: "7650.00",
+    priceOld: "8500.00",
     discount: "-10% OFF",
     id: "199652514"
   },
@@ -41,8 +41,8 @@ const products = [
     images: [
        "https://acdn-us.mitiendanube.com/stores/001/989/991/products/pokemon_tcg_scarlet_violetparad-e4f5254e03feca6b0217398502377050-1024-1024.webp"
     ],
-    priceCurrent: "$7.650,00",
-    priceOld: "$8.500,00",
+    priceCurrent: "7650.00",
+    priceOld: "8500.00",
     discount: "-10% OFF",
     id: "199652515"
   },
@@ -52,8 +52,8 @@ const products = [
     images: [
        "https://acdn-us.mitiendanube.com/stores/001/989/991/products/pokemon_tcg_scarlet_violetobsid-dd8fdb7a4964322d0a17451143424423-1024-1024.png"
     ],
-    priceCurrent: "$7.650,00",
-    priceOld: "$8.500,00",
+    priceCurrent: "7650.00",
+    priceOld: "8500.00",
     discount: "-10% OFF",
     id: "199652516"
   },
@@ -63,8 +63,8 @@ const products = [
     images: [
        "https://acdn-us.mitiendanube.com/stores/001/989/991/products/pokemon_tcg_scarlet_violetobsid-2-11e0a9ba4c6917720617451143453318-1024-1024.png"
     ],
-    priceCurrent: "$7.650,00",
-    priceOld: "$8.500,00",
+    priceCurrent: "7650.00",
+    priceOld: "8500.00",
     discount: "-10% OFF",
     id: "199652517"
     }

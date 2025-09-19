@@ -514,3 +514,26 @@ input#slide3:checked ~ .navigation label[for="slide3"] {
   cursor: pointer;
 }
 
+/*cart*/
+.cart-item {
+  border-bottom: 1px solid #ccc;
+  padding: 10px 0;
+}
+
+.cart-item h3 {
+  margin: 0;
+}
+
+.btn-remove, #btn-clear {
+  background-color: var(--header-background);
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  margin-top: 6px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.btn-remove:hover, #btn-clear:hover {
+  background-color: var(--header-background);
+}

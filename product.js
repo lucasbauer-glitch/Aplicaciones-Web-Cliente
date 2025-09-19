@@ -26,9 +26,9 @@ function renderProductDescription(product) {
             </nav>
             <h1 id="product-title">${product.title}</h1>
             <div class="price-container">
-              <span class="price-old">${product.priceOld}</span>
+              <span class="price-old">${formatPrice(product.priceOld)}</span>
               <span class="discount">${product.discount}</span>
-              <span class="price-current-description">${product.priceCurrent}</span>
+              <span class="price-current-description">${formatPrice(product.priceCurrent)}</span>
             </div>
             <div class="container-form">
               <form id="product-form" data-id="${product.id}" method="post" action="/comprar/">

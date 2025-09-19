@@ -23,8 +23,8 @@ function Product({ title, images, priceCurrent, priceOld, discount, id }) {
           <h3 class="product-name">${title}</h3>
         </a>
         <div class="product-prices">
-          <span class="price-current">${priceCurrent}</span>
-          <span class="price-old">${priceOld}</span>
+          <span class="price-current">${formatPrice(priceCurrent)}</span>
+          <span class="price-old">${formatPrice(priceOld)}</span>
           <span class="discount">${discount}</span>
         </div>
         <div class="product-action">

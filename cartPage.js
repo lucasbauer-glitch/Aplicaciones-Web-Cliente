@@ -16,16 +16,16 @@ document.addEventListener("DOMContentLoaded", () => {
     let total = 0;
 
     cart.forEach((item, index) => {
-      const itemTotal = item.quantity * parseFloat(item.priceCurrent.replace(/[^0-9.-]+/g, ""));
+      const itemTotal = item.quantity * parseFloat(item.priceCurrent);
       total += itemTotal;
 
       const productDiv = document.createElement("div");
       productDiv.classList.add("cart-item");
       productDiv.innerHTML = `
         <h3>${item.title}</h3>
-        <p>Precio: ${item.priceCurrent}</p>
+        <p>Precio: ${formatPrice(item.priceCurrent)}</p>
         <p>Cantidad: ${item.quantity}</p>
-        <p>Subtotal: $${itemTotal.toLocaleString("es-AR")}</p>
+        <p>Subtotal: ${formatPrice(item.quantity * item.priceCurrent)}</p>
         <button class="btn-remove" data-index="${index}">Eliminar</button>
       `;
       cartContainer.appendChild(productDiv);
