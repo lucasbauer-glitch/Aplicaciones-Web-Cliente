@@ -22,7 +22,8 @@ document.addEventListener("DOMContentLoaded", () => {
       const productDiv = document.createElement("div");
       productDiv.classList.add("cart-item");
       productDiv.innerHTML = `
-        <h3>${item.title}</h3>
+        <img src="${item.image}">
+        <h4>${item.title}</h4>
         <p>Precio: ${formatPrice(item.priceCurrent)}</p>
         <p>Cantidad: ${item.quantity}</p>
         <p>Subtotal: ${formatPrice(item.quantity * item.priceCurrent)}</p>
@@ -33,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     cartSummary.innerHTML = `
       <h2>Total: $${total.toLocaleString("es-AR")}</h2>
-      <button id="btn-clear">Vaciar carrito</button>
+      <button id="btn-buy">Finalizar compra</button>
     `;
 
     document.querySelectorAll(".btn-remove").forEach(btn => {
@@ -45,6 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
           updateCartBadge();
         });
       });
+    /*<button id="btn-clear">Vaciar carrito</button>
     const btnClear = document.getElementById("btn-clear")
     if(btnClear){
       btnClear.addEventListener("click", () =>{
@@ -53,7 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
         renderCart();
         updateCartBadge();
       })
-    }
+    }*/
   }
   renderCart();
 });
