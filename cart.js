@@ -32,12 +32,14 @@ function addToCartHandler(form) {
         id: product.id,
         title: product.title,
         quantity: quantity,
-        priceCurrent: product.priceCurrent
+        priceCurrent: product.priceCurrent,
+        image: product.images[0]
       });
     }
 
-    updateCartBadge();
+    
     localStorage.setItem("cart", JSON.stringify(cart));
+    updateCartBadge();
   });
 }
 document.addEventListener("DOMContentLoaded", updateCartBadge);
