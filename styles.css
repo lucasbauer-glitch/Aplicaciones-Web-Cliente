@@ -533,7 +533,7 @@ input#slide3:checked ~ .navigation label[for="slide3"] {
   padding: 10px 0 10px 40px;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
 }
 .cart-item img {
