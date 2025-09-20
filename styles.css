@@ -136,12 +136,7 @@ body {
 .head-nav a:hover {
   color: #131212;;
 }
-footer{
-  background-color: var(--header-background);
-  margin: 0;
-  padding: 10px;
-  justify-items: center;
-}
+
 .tittle-prd{
   font-family: var(--font-family-tittle);
   text-align: center;
@@ -554,7 +549,7 @@ input#slide3:checked ~ .navigation label[for="slide3"] {
 #btn-buy {
   margin: 5px;
   padding: 10px 15px;
-  background: #4caf50; /* verde para comprar */
+  background: #4caf50;
   color: white;
   border: none;
   border-radius: 5px;
@@ -572,4 +567,60 @@ input#slide3:checked ~ .navigation label[for="slide3"] {
 
 main h1{
   text-align: center;
+}
+
+footer {
+  background: var(--header-background);
+  color: #fff;
+  padding: 40px 20px;
+  font-size: 14px;
+}
+
+.footer-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.footer-section h4 {
+  margin-bottom: 10px;
+  font-size: 16px;
+  color: #ffcc00;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 8px;
+}
+
+.footer-section ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.footer-section ul li a:hover {
+  text-decoration: underline;
+}
+
+.social-icons a {
+  margin-right: 10px;
+}
+.payment-icons {
+  align-content: center;
+}
+.payment-icons img {
+  background-color: #f8f7f7;
+  margin-right: 10px;
+}
+
+.footer-bottom {
+  margin-top: 20px;
+  text-align: center;
+  border-top: 1px solid #444;
+  padding-top: 10px;
+  font-size: 12px;
 }
