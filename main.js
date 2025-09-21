@@ -55,3 +55,28 @@ document.addEventListener("DOMContentLoaded", () => {
   const forms = document.querySelectorAll(".product-form");
   forms.forEach(addToCartHandler);
 });
+
+
+// slider
+let current = 1;
+const totalSlides = 3;
+let timer;
+
+function autoSlide() {
+  document.getElementById("slide" + current).checked = true;
+  current++;
+  if (current > totalSlides) {
+    current = 1;
+  }
+  timer = setTimeout(autoSlide, 4000);
+}
+
+autoSlide();
+
+document.querySelectorAll(".navigation label").forEach((label, index) => {
+  label.addEventListener("click", () => {
+    clearTimeout(timer);
+    current = index + 1;
+    autoSlide();
+  });
+});
