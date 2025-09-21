@@ -38,10 +38,10 @@ function Product({ title, images, priceCurrent, priceOld, discount, id }) {
   `;
 }
 //refactorizado para grilla de productos
-function renderProducts(containerSelector, withScrollButtons = false) {
+function renderProducts(containerSelector, withScrollButtons = false, productList = products) {
   const container = document.querySelector(containerSelector);
   if (!container) return;
-  container.innerHTML = products.map(Product).join("");
+  container.innerHTML = productList.map(Product).join("");
   if (withScrollButtons) {
     const btnLeft = document.querySelector(".btn-left");
     const btnRight = document.querySelector(".btn-right");
@@ -64,9 +64,58 @@ document.addEventListener("DOMContentLoaded", () => {
   renderProducts(".all-product-container", false);
 });
 
+//filtros para allProducts.html
+
+function getUniqueValues(key) {
+  return [...new Set(products.map((product) => product[key]))];
+}
+
+function renderFilterOptions() {
+  const filterContainer = document.querySelector(".filters");
+  const marcas = getUniqueValues("brand");
+  const categorias = getUniqueValues("category");
+
+  const categoriaHTML = `
+    <h4>Categoría</h4>
+      <ul class="category">
+        ${categorias.map(m =>`<li class="filter-item"><button class="filter-button" data-filter="${m}">${m}</button></li>`).join('')}
+      </ul>  
+    `;
+   const marcasHTML = `
+    <h4>Marca</h4>
+      <ul class="brand">
+        ${marcas.map(m =>`<li class="filter-item"><button class="filter-button" data-filter="${m}">${m}</button></li>`).join('')}
+      </ul>  
+    `;
+  filterContainer.innerHTML = categoriaHTML + marcasHTML;
+}
+
+renderFilterOptions();
+
+function filteredProducts() {
+  const buttons = document.querySelectorAll(".filter-button");
+  const allContainer = ".all-product-container";
+
+  buttons.forEach(button => {
+    button.addEventListener("click", () => {
+      const filterValue = button.dataset.filter;
+      const filterClass = button.closest('ul').classList[0];
+      let filtered = products;
+
+      filtered = products.filter(product => {
+        if(filterClass === "category") return product.category === filterValue;
+        if (filterClass === "brand" ) return product.brand === filterValue;
+      });
+      console.log(filtered);
+      renderProducts(allContainer, false, filtered);
+    }); 
+  })
+}
+filteredProducts();
+
 // slider
-let current = 1;
-const totalSlides = 3;
+let current = 0;
+const totalSlides = 2;
 let timer;
 
 function autoSlide() {

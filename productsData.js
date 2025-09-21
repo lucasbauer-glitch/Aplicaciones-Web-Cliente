@@ -11,6 +11,8 @@ const products = [
     priceCurrent: "7650.00",
     priceOld: "8500.00",
     discount: "-10% OFF",
+    brand: "Pokémon",
+    category: "Cartas",
     id: "199652512"
   },
   {
@@ -22,6 +24,8 @@ const products = [
     priceCurrent: "7650.00",
     priceOld: "8500.00",
     discount: "-10% OFF",
+    brand: "Nintendo",
+    category: "Cartas",
     id: "199652513"
   },
   {
@@ -33,7 +37,10 @@ const products = [
     priceCurrent: "7650.00",
     priceOld: "8500.00",
     discount: "-10% OFF",
+    brand: "Pokémon",
+    category: "Cartas",
     id: "199652514"
+    
   },
   {
     link: "https://www.shibuyacomicstore.com.ar/productos/pokemon-booster-pack-sv-journey-together-ingles-arte-aleatorio/",
@@ -44,6 +51,8 @@ const products = [
     priceCurrent: "7650.00",
     priceOld: "8500.00",
     discount: "-10% OFF",
+    brand: "Nintendo",
+    category: "Cartas",
     id: "199652515"
   },
   {
@@ -55,6 +64,8 @@ const products = [
     priceCurrent: "7650.00",
     priceOld: "8500.00",
     discount: "-10% OFF",
+    brand: "Pokémon",
+    category: "Cartas",
     id: "199652516"
   },
   {
@@ -66,6 +77,8 @@ const products = [
     priceCurrent: "7650.00",
     priceOld: "8500.00",
     discount: "-10% OFF",
+    brand: "Nintendo",
+    category: "TCG",
     id: "199652517"
     }
 ];
