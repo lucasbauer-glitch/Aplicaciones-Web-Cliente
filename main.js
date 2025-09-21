@@ -72,6 +72,7 @@ function getUniqueValues(key) {
 
 function renderFilterOptions() {
   const filterContainer = document.querySelector(".filters");
+  if (!filterContainer) return;
   const marcas = getUniqueValues("brand");
   const categorias = getUniqueValues("category");
 
@@ -119,6 +120,8 @@ const totalSlides = 2;
 let timer;
 
 function autoSlide() {
+  const slide =document.getElementById("slide" + current);
+  if (!slide) return; 
   document.getElementById("slide" + current).checked = true;
   current++;
   if (current > totalSlides) {
