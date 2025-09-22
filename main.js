@@ -79,12 +79,14 @@ function renderFilterOptions() {
   const categoriaHTML = `
     <h4>Categoría</h4>
       <ul class="category">
+        <li class="filter-item"><button class="filter-button" data-filter="all">Todos</button></li>
         ${categorias.map(m =>`<li class="filter-item"><button class="filter-button" data-filter="${m}">${m}</button></li>`).join('')}
       </ul>  
     `;
    const marcasHTML = `
     <h4>Marca</h4>
       <ul class="brand">
+        <li class="filter-item"><button class="filter-button" data-filter="all">Todos</button></li>
         ${marcas.map(m =>`<li class="filter-item"><button class="filter-button" data-filter="${m}">${m}</button></li>`).join('')}
       </ul>  
     `;
@@ -103,11 +105,12 @@ function filteredProducts() {
       const filterClass = button.closest('ul').classList[0];
       let filtered = products;
 
-      filtered = products.filter(product => {
-        if(filterClass === "category") return product.category === filterValue;
-        if (filterClass === "brand" ) return product.brand === filterValue;
-      });
-      console.log(filtered);
+      if (filterValue !== "all") {
+          filtered = products.filter(product => {
+            if(filterClass === "category") return product.category === filterValue;
+            if (filterClass === "brand" ) return product.brand === filterValue;
+        });
+      }
       renderProducts(allContainer, false, filtered);
     }); 
   })
@@ -125,7 +128,7 @@ function autoSlide() {
   document.getElementById("slide" + current).checked = true;
   current++;
   if (current > totalSlides) {
-    current = 1;
+    current = 0;
   }
   timer = setTimeout(autoSlide, 4000);
 }
