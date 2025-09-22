@@ -40,6 +40,19 @@ function addToCartHandler(form) {
     
     localStorage.setItem("cart", JSON.stringify(cart));
     updateCartBadge();
+    showCartAlert()
   });
 }
 document.addEventListener("DOMContentLoaded", updateCartBadge);
+
+function showCartAlert(message="Producto agregado al carrito"){
+  const alertBox = document.getElementById("cart-alert");
+  if(!alertBox) return;
+
+  alertBox.textContent = message;
+  alertBox.classList.add("show");
+
+  setTimeout(()=>{
+    alertBox.classList.remove("show");
+  }, 2000);
+}
