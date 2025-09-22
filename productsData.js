@@ -65,7 +65,7 @@ const products = [
     priceOld: "8500.00",
     discount: "-10% OFF",
     brand: "Pokémon",
-    category: "Cartas",
+    category: "TCG",
     id: "199652516"
   },
   {
