@@ -24,7 +24,7 @@ body {
   background: var(--header-background);
 }
 .container-head {
-  padding: 8px 54px;
+  padding: 8px 12%;
 }
 .row {
   display: flex;
