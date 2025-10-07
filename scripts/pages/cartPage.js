@@ -46,16 +46,6 @@ document.addEventListener("DOMContentLoaded", () => {
           updateCartBadge();
         });
       });
-    /*<button id="btn-clear">Vaciar carrito</button>
-    const btnClear = document.getElementById("btn-clear")
-    if(btnClear){
-      btnClear.addEventListener("click", () =>{
-        cart = [];
-        localStorage.setItem("cart",JSON.stringify(cart));
-        renderCart();
-        updateCartBadge();
-      })
-    }*/
   }
   renderCart();
 });

@@ -1,3 +1,3 @@
-function formatPrice(value) {
+export function formatPrice(value) {
   return `$${value.toLocaleString("es-AR")}`;
 }
