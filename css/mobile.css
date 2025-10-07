@@ -5,11 +5,11 @@
 }
 @media (max-width: 500px) {
   .head-nav {
-    display: none; 
+    display: none;
     flex-direction: column;
-    background-color: rgb(233, 84, 84);
+    background-color: #ffffff;
     position: relative;
-    top: 84px; 
+    top: 84px;
     padding: 10px;
     left: 9px;
     position: fixed;
@@ -20,6 +20,10 @@
 
   .head-nav.active {
     display: flex;
+    --font-color-input: #ef0d3c;
+    gap: 10px;
+    margin-left: 20px;
+    padding: 5px 20px;
   }
   .head-nav a{
     font-weight: bold;

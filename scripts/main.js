@@ -1,9 +1,12 @@
 import { initNavBar } from './components/navbar.js';
 import { initHeader } from './components/head.js';
 import { searchproducts } from './search.js';
-  initHeader();
-  initNavBar();
-  searchproducts();
+import { initCart } from './cart.js';
+const cartModule = initCart();
+initHeader();
+initNavBar();
+searchproducts();
+cartModule.updateCartBadge();
 document.addEventListener("DOMContentLoaded", () => {
   
   const page = document.body.dataset.page;
@@ -15,5 +18,8 @@ document.addEventListener("DOMContentLoaded", () => {
     case 'allProduct':
       import('./pages/allProduct.js').then(m => m.initAllProduct());
       break;
+    case 'description':
+      import('./product.js').then(m => m.initProductDetails());
+      break;  
   }
 });

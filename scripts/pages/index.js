@@ -1,8 +1,8 @@
 import { formatPrice } from '../core/utils.js';
 import { slider } from '../components/slider.js';
 import { products } from '../productsData.js';
-
-
+import { initCart } from '../cart.js';
+const cartModule = initCart();
 export function initIndex() {
   slider();
   
@@ -53,7 +53,7 @@ export function initIndex() {
       }
     }
     const forms = document.querySelectorAll(".product-form");
-    forms.forEach(addToCartHandler);
+    forms.forEach(cartModule.addToCartHandler);
   }
   
     renderProducts(".products-slid", true);

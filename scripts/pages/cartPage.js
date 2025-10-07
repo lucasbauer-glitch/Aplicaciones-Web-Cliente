@@ -1,4 +1,6 @@
-document.addEventListener("DOMContentLoaded", () => {
+import { formatPrice } from "../core/utils.js";
+import { initCart } from "../cart.js";
+
   const cartContainer = document.getElementById("cart-container");
   const cartSummary = document.getElementById("cart-summary");
 
@@ -48,4 +50,3 @@ document.addEventListener("DOMContentLoaded", () => {
       });
   }
   renderCart();
-});

@@ -1,5 +1,7 @@
 import { formatPrice } from '../core/utils.js';
 import { products } from '../productsData.js';
+import { initCart } from '../cart.js';
+const cartModule = initCart();
 
 
 export function initAllProduct() {
@@ -51,7 +53,7 @@ export function initAllProduct() {
       }
     }
     const forms = document.querySelectorAll(".product-form");
-    forms.forEach(addToCartHandler);
+    forms.forEach(cartModule.addToCartHandler);
   }
   
     renderProducts(".all-product-container", false);
