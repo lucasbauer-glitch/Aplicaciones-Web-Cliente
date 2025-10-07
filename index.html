@@ -4,11 +4,11 @@
   <meta name="google-site-verification" content="P0NmQxH2-rwHcfjIj45WgIeciU27XMM801bhgwb6AHY" />
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PokemaniaStore</title>
+  <title>AppWebDemo</title>
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/mobile.css">
 </head>
-<body>
+<body data-page="index">
   <svg xmlns="http://www.w3.org/2000/svg" class="hidden">
     <symbol id="bars" viewBox="0 0 512 512">
       <path d="M178.42,118.37h155.15c16.07,0,29.09-7.39,29.09-16.52s-13.02-16.52-29.09-16.52H178.42c-16.07,0-29.09,7.39-29.09,16.52s13.02,16.52,29.09,16.52Zm155.15,121.12H178.42c-16.07,0-29.09,7.39-29.09,16.52s13.02,16.52,29.09,16.52h155.15c16.07,0,29.09-7.39,29.09-16.52s-13.02-16.52-29.09-16.52Zm0,154.15H178.42c-16.07,0-29.09,7.39-29.09,16.52s13.02,16.52,29.09,16.52h155.15c16.07,0,29.09-7.39,29.09-16.52s-13.02-16.52-29.09-16.52Z"></path>
@@ -23,56 +23,8 @@
       <path d="M463.54,164.66c-14.69-16.9-35.96-26.65-58.35-26.75H151.58l-4.87-16.78c-9.79-32.25-39.24-54.54-72.94-55.2l-1.22-.24h-24.31c-10.08,0-18.24,8.16-18.24,18.24s8.16,18.24,18.24,18.24h24.31c18.41,.16,34.43,12.59,39.15,30.4l61.51,207.4c9.93,32.68,40.01,55.07,74.16,55.2h142.97c38.89-.42,71.5-29.5,76.35-68.08l14.59-100.66c3.39-22.19-3.1-44.76-17.75-61.76h0Zm-18.24,57.14l-14.59,100.9c-3.19,19.87-20.24,34.56-40.36,34.77H247.38c-18.06,0-33.99-11.86-39.15-29.18l-45.72-154.15h243.14c11.91,.18,23.15,5.56,30.76,14.73,7.61,9.16,10.86,21.19,8.87,32.93h.01Zm-179.2,226.85c0,13.43-10.88,24.31-24.31,24.31s-24.31-10.88-24.31-24.31,10.88-24.31,24.31-24.31,24.31,10.88,24.31,24.31Zm145.89,0c0,13.43-10.88,24.31-24.31,24.31s-24.31-10.88-24.31-24.31,10.88-24.31,24.31-24.31,24.31,10.88,24.31,24.31Z"></path>
     </symbol>
   </svg>
-  <div class="head-logo-row">
-    <div class="container-head">
-      <div class="row">
-        <div class="menu-mobile">
-          <a href="index.html" class="btn-menu" data-toggle="#nav-hamburger" aria-label="Menú" data-component="menu-button">
-            <svg><use xlink:href="#bars"></use></svg>
-          </a>
-        </div>
-        <div class="search-col">
-          <form class="search-form" action="/search/" method="get"></form>
-            <input type="search" name="q" placeholder="Buscar" aria-label="Buscar" class="search-input">
-            <button type="submit" class="search-btn" aria-label="Buscar">
-              <svg class="icon">
-                <use href="#search"></use>
-              </svg>
-            </button>
-          </form>
-          <ul class="resultados"></ul>
-        </div>
-        <div class="logo-col">
-          <div class="logo">
-            <a href="index.html" title="Pokemania">
-              <img src="https://i.ibb.co/PGPwTKPz/pokelogob.png"
-                  alt="Pokemania" class="logo-img">
-            </a>
-          </div>
-        </div>
-        <div class="actions-col">
-          <div class="user-col">
-            <a href="/account/login/" class="btn-user">
-              <svg><use xlink:href="#user"></use></svg>
-            </a>
-          </div>
-          <div class="cart-col">
-            <a href="cart.html" data-toggle="#modal-cart" data-modal-url="modal-fullscreen-cart" class="btn-cart">
-              <svg><use xlink:href="#cart"></use></svg>
-              <span class="cart-badge">0</span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <header>
-    <nav class="head-nav">
-      <a href="index.html">Inicio</a>
-      <a href="allProduct.html">Productos</a>
-      <a href="contactPage.html">Contacto</a>
-    </nav>
-  </header>
+  <div id="head"></div>
+  <header id="navbar"></header>
   <main>
     <section class="sect-slider">
       <div class="slider">
@@ -155,15 +107,16 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2025 PokemaniaStore - Todos los derechos reservados.</p>
+      <p>>© 2025 Pagina demo</p>
     </div>
   </footer>
   
-  <script src="js/utils.js"></script>
-  <script src="js/productsData.js"></script>
-  <script src="js/cart.js"></script>
-  <script src="js/main.js"></script>
-  <script src="js/search.js"></script>
+
+  <script src="scripts/productsData.js"></script>
+  <script src="scripts/cart.js"></script>
+  <script type="module" src="scripts/main.js"></script>
+  <script src="scripts/search.js"></script>
+
 </body>
 </html>
 
