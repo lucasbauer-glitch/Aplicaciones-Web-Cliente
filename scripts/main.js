@@ -1,11 +1,11 @@
 import { initNavBar } from './components/navbar.js';
 import { initHeader } from './components/head.js';
 import { searchproducts } from './search.js';
-
-document.addEventListener("DOMContentLoaded", () => {
   initHeader();
   initNavBar();
   searchproducts();
+document.addEventListener("DOMContentLoaded", () => {
+  
   const page = document.body.dataset.page;
     
   switch (page) {
