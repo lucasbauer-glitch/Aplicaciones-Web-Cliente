@@ -1,11 +1,9 @@
 import { formatPrice } from '../core/utils.js';
-import { slider } from '../components/slider.js';
 import { products } from '../productsData.js';
 
 
-export function initIndex() {
-  slider();
-  
+export function initAllProduct() {
+
   // función que genera el HTML de cada producto
   function Product({ title, images, priceCurrent, priceOld, discount, id }) {
     return `
@@ -56,6 +54,60 @@ export function initIndex() {
     forms.forEach(addToCartHandler);
   }
   
-    renderProducts(".products-slid", true);
+    renderProducts(".all-product-container", false);
+
+  //filtros para allProducts.html
+
+  function getUniqueValues(key) {
+    return [...new Set(products.map((product) => product[key]))];
+  }
+
+  function renderFilterOptions() {
+    const filterContainer = document.querySelector(".filters");
+    if (!filterContainer) return;
+    const marcas = getUniqueValues("brand");
+    const categorias = getUniqueValues("category");
+
+    const categoriaHTML = `
+      <h4>Categoría</h4>
+        <ul class="category">
+          <li class="filter-item"><button class="filter-button" data-filter="all">Todos</button></li>
+          ${categorias.map(m =>`<li class="filter-item"><button class="filter-button" data-filter="${m}">${m}</button></li>`).join('')}
+        </ul>  
+      `;
+    const marcasHTML = `
+      <h4>Marca</h4>
+        <ul class="brand">
+          <li class="filter-item"><button class="filter-button" data-filter="all">Todos</button></li>
+          ${marcas.map(m =>`<li class="filter-item"><button class="filter-button" data-filter="${m}">${m}</button></li>`).join('')}
+        </ul>  
+      `;
+    filterContainer.innerHTML = categoriaHTML + marcasHTML;
+  }
+
+  renderFilterOptions();
+
+  function filteredProducts() {
+    const buttons = document.querySelectorAll(".filter-button");
+    const allContainer = ".all-product-container";
+
+    buttons.forEach(button => {
+      button.addEventListener("click", () => {
+        const filterValue = button.dataset.filter;
+        const filterClass = button.closest('ul').classList[0];
+        let filtered = products;
+
+        if (filterValue !== "all") {
+            filtered = products.filter(product => {
+              if(filterClass === "category") return product.category === filterValue;
+              if (filterClass === "brand" ) return product.brand === filterValue;
+          });
+        }
+        renderProducts(allContainer, false, filtered);
+      }); 
+    })
+  }
+  filteredProducts();
+
 
 };

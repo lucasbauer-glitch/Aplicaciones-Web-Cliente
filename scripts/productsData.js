@@ -1,4 +1,4 @@
-const products = [
+export const products = [
   {
     link: "https://www.shibuyacomicstore.com.ar/productos/pokemon-booster-pack-sv-journey-together-ingles-arte-aleatorio/",
     title: "Pokémon Booster Pack S&V Surging Sparks Inglés (Arte Aleatorio)",

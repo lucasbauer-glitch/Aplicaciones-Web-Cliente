@@ -1,3 +1,5 @@
+import { products } from './productsData.js';
+
 function renderProductDescription(product) {
   return `
     <section class="description-section">
