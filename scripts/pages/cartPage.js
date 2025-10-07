@@ -1,5 +1,6 @@
 import { formatPrice } from "../core/utils.js";
 import { initCart } from "../cart.js";
+const cartModule = initCart();
 
   const cartContainer = document.getElementById("cart-container");
   const cartSummary = document.getElementById("cart-summary");
@@ -45,7 +46,7 @@ import { initCart } from "../cart.js";
           cart.splice(index, 1);
           localStorage.setItem("cart", JSON.stringify(cart))
           renderCart();
-          updateCartBadge();
+          cartModule.updateCartBadge();
         });
       });
   }
