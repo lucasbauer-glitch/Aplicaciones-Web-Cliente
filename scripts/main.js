@@ -1,6 +1,10 @@
+import { initNavBar } from './components/navbar.js';
+import { initHeader } from './components/head.js';
 document.addEventListener("DOMContentLoaded", () => {
+  initHeader();
+  initNavBar();
   const page = document.body.dataset.page;
-
+    
   switch (page) {
     case 'index':
       import('./pages/index.js').then(m => m.initIndex());

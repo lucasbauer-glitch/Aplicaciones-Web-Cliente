@@ -1,10 +1,7 @@
 import { formatPrice } from '../core/utils.js';
-import { initNavBar } from '../components/navbar.js';
-import { initHeader } from '../components/head.js';
 import { slider } from '../components/slider.js';
+
 export function initIndex() {
-  initHeader();
-  initNavBar();
   slider();
 
   // función que genera el HTML de cada producto
