@@ -26,11 +26,20 @@ const cartModule = initCart();
       productDiv.classList.add("cart-item");
       productDiv.innerHTML = `
         <img src="${item.image}">
-        <h4>${item.title}</h4>
-        <p>Precio: ${formatPrice(item.priceCurrent)}</p>
-        <p>Cantidad: ${item.quantity}</p>
-        <p>Subtotal: ${formatPrice(item.quantity * item.priceCurrent)}</p>
-        <button class="btn-remove" data-index="${index}">Eliminar</button>
+        <div class="cart-item-details">
+          <h4>${item.title}</h4>
+          <button class="btn-remove" data-index="${index}">Eliminar</button>
+        </div>
+        <div class="cart-item-quantity ">
+          <button type="button" class="quantity-decrease">-</button>
+          <input type="number" name="quantity" value=${item.quantity} min="1">
+          <button type="button" class="quantity-increase">+</button>
+        </div>
+        <div class ="cart-item-price">
+          <p>${formatPrice(item.quantity * item.priceCurrent)}</p>
+        </div>
+        
+        
       `;
       cartContainer.appendChild(productDiv);
     });

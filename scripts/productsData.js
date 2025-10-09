@@ -1,7 +1,7 @@
 export const products = [
   {
     link: "https://www.shibuyacomicstore.com.ar/productos/pokemon-booster-pack-sv-journey-together-ingles-arte-aleatorio/",
-    title: "Pokémon Booster Pack S&V Surging Sparks Inglés (Arte Aleatorio)",
+    title: "Pokémon Booster Pack S&V",
     images: [
        "https://acdn-us.mitiendanube.com/stores/001/989/991/products/327px-sv8_booster_pikachu-2c0ce094f7dff2d2ba17398482200736-1024-1024.webp",
        "https://acdn-us.mitiendanube.com/stores/001/989/991/products/327px-sv8_booster_pikachu-2c0ce094f7dff2d2ba17398482200736-1024-1024.webp",

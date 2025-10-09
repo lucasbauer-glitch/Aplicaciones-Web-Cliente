@@ -127,7 +127,29 @@
     padding: 10px;
     font-size: 14px;
   }
-  .cart-item h4 {
-    max-width: 280px;
+  .cart-item {
+    flex-wrap: wrap;
+    padding: 0%;
+  }
+  .cart-item-details {
+    width: 70%
+  }
+  .cart-item-quantity {
+    margin-left: 105px;
+    margin-right: 99px;
+  }
+  .cart-page-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  #cart-container {
+    width: 99%;
+  }
+  #cart-summary {
+    margin-bottom: 32px;
+    position: static;
+  }
+  #aboutUs-container {
+    padding: 20px;
   }
 }
