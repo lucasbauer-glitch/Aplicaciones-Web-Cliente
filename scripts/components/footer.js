@@ -1,5 +1,5 @@
 
-export function footer() {
+export function initFooter() {
     const footer = document.querySelector('.footer-container');
     if (!footer) return;
     footer.innerHTML = `
