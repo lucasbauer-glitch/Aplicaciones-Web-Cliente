@@ -1,9 +1,9 @@
 import { products } from '../productsData.js';
 import { initCart } from '../cart.js';
-import { renderFilterOptions } from '../components/FilterList.js';
-import { createProductElement } from '../components/ProductCard.js';
+import { renderFilterOptions } from '../components/filterList.js';
+import { createProductElement } from '../components/productCard.js';
 import { getUniqueValues } from "../core/utils.js";
-import { filteredProducts } from '../components/SetupFilters.js';
+import { filteredProducts } from '../components/setupFilters.js';
 const cartModule = initCart();
 
 export function initAllProduct() {

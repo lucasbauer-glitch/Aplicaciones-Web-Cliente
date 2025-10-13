@@ -1,15 +1,16 @@
-import { initNavBar } from './components/Navbar.js';
-import { initHeader } from './components/Head.js';
+import { initNavBar } from './components/navbar.js';
+import { initHeader } from './components/head.js';
 import { searchproducts } from './search.js';
 import { initCart } from './cart.js';
-import { initFooter } from './components/Footer.js';
+import { initFooter } from './components/footer.js';
 
 const cartModule = initCart();
 initHeader();
 initNavBar();
 searchproducts();
+/*initFooter();*/
 cartModule.updateCartBadge();
-initFooter();
+
 document.addEventListener("DOMContentLoaded", () => {
   
   const page = document.body.dataset.page;

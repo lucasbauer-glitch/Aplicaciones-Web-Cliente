@@ -1,7 +1,7 @@
-import { slider } from '../components/Slider.js';
+import { slider } from '../components/slider.js';
 import { products } from '../productsData.js';
 import { initCart } from '../cart.js';
-import { createProductElement } from '../components/ProductCard.js';
+import { createProductElement } from '../components/productCard.js';
 const cartModule = initCart();
 export function initIndex() {
   slider();
