@@ -11,6 +11,7 @@ export const products = [
     priceCurrent: "7650.00",
     priceOld: "8500.00",
     discount: "-10% OFF",
+    description: "Description Booster Pack",
     brand: "Pokémon",
     category: "Cartas",
     id: "199652512"
@@ -24,6 +25,7 @@ export const products = [
     priceCurrent: "7650.00",
     priceOld: "8500.00",
     discount: "-10% OFF",
+    description: "Description Booster Pack",
     brand: "Nintendo",
     category: "Cartas",
     id: "199652513"
@@ -37,6 +39,7 @@ export const products = [
     priceCurrent: "7650.00",
     priceOld: "8500.00",
     discount: "-10% OFF",
+    description: "Description Booster Pack",
     brand: "Pokémon",
     category: "Cartas",
     id: "199652514"
@@ -51,6 +54,7 @@ export const products = [
     priceCurrent: "7650.00",
     priceOld: "8500.00",
     discount: "-10% OFF",
+    description: "Description Booster Pack",
     brand: "Nintendo",
     category: "Cartas",
     id: "199652515"
@@ -64,6 +68,7 @@ export const products = [
     priceCurrent: "7650.00",
     priceOld: "8500.00",
     discount: "-10% OFF",
+    description: "Description Booster Pack",
     brand: "Pokémon",
     category: "TCG",
     id: "199652516"
@@ -77,6 +82,7 @@ export const products = [
     priceCurrent: "7650.00",
     priceOld: "8500.00",
     discount: "-10% OFF",
+    description: "Description Booster Pack",
     brand: "Nintendo",
     category: "TCG",
     id: "199652517"
