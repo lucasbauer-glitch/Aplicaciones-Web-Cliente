@@ -8,7 +8,7 @@ const cartModule = initCart();
 initHeader();
 initNavBar();
 searchproducts();
-/*initFooter();*/
+initFooter();
 cartModule.updateCartBadge();
 
 document.addEventListener("DOMContentLoaded", () => {
