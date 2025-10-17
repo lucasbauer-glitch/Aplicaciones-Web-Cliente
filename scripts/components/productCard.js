@@ -75,4 +75,3 @@ export function createProductElement({ title, images, priceCurrent, priceOld, di
 
     return product;
 }
-/*cambio de rename*/

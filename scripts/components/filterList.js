@@ -1,11 +1,19 @@
 
 export function renderFilterOptions(container, key, title, items) {
   const section = document.createElement("section");
+  section.classList.add("filter-section", "filter-collapsible");
   const header = document.createElement("h4");
+  header.classList.add("filter-header");
   header.textContent = title;
 
+  const toggleIcon = document.createElement("span");
+  toggleIcon.classList.add("filter-toggle");
+  toggleIcon.textContent = "▾";
+  header.appendChild(toggleIcon);
+
   const list = document.createElement("ul");
-  list.classList.add(key);
+  list.classList.add(key, "filter-list");
+  list.dataset.filterType = key;
 
   const allItem = document.createElement("li");
   allItem.classList.add("filter-item");

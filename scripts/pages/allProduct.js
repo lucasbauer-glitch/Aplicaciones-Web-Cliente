@@ -27,13 +27,29 @@ export function initAllProduct() {
   renderProducts(allContainer);
 
   //filtros para allProducts.html
+  const modal = document.getElementById("filterModal");
+  const openBtn = document.getElementById("openFilterModal");
+  const closeBtn = modal.querySelector(".close");
+  const filtersContainer = modal.querySelector(".filters");
+
+  openBtn.addEventListener("click", () => {
+    modal.style.display = "block";
+  });
+
+  closeBtn.addEventListener("click", () => {
+    modal.style.display = "none";
+  });
+
+  window.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      modal.style.display = "none";
+    }  
+  });
 
   const categories = getUniqueValues("category");
   const brands = getUniqueValues("brand");
-  const filtersContainer = document.querySelector(".filters");
   renderFilterOptions(filtersContainer, "category", "Categoría", categories); 
   renderFilterOptions(filtersContainer, "brand", "Marca", brands);
   filteredProducts(".filters", renderProducts);
-};
-
+}
 
