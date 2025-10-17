@@ -2,7 +2,7 @@
   --font-size-mobile-base: 10px;
   --font-size-mobile-large: 12px;
   --font-size-mobile-small: 8px;
-  --font-color-input: #ef0d3c;
+  --font-color-mobile-input: #ef0d3c;
 }
 @media (max-width: 500px) {
   .head-nav {
@@ -21,7 +21,7 @@
 
   .head-nav.active {
     display: flex;
-    color: var(--font-color-input);
+    color: var(--font-color-mobile-input);
     gap: 10px;
     margin-left: 20px;
     padding: 5px 20px;
@@ -66,7 +66,7 @@
     display: flex;
   }
   .open-filters-btn, .open-Sort-btn {
-    border: 1px solid var(--font-color-input);
+    border: 1px solid var(--font-color-mobile-input);
     font-weight: bold;
   }
   .all-product-container {
