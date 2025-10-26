@@ -7,16 +7,16 @@
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/mobile.css">
 </head>
-<body class="login-body">
+<body data-page="login" class="login-body">
   <div class="login-container">
     <h2>Iniciar sesión</h2>
-    <div class="error" id="errorMsg">Correo o contraseña incorrectos</div>
     <div class="input-group">
       <input type="email" id="email" placeholder="Correo electrónico">
     </div>
     <div class="input-group">
       <input type="password" id="password" placeholder="Contraseña">
     </div>
+    <div class="error" id="errorMsg">Correo o contraseña incorrectos</div>
     <div class="options">
       <label><input type="checkbox"> Recordarme</label>
       <a href="#">¿Olvidaste tu contraseña?</a>
@@ -31,5 +31,6 @@
       ¿No tenés cuenta? <a href="#">Crear una</a>
     </div>
   </div>
+  <script src="scripts/main.js" type="module"></script>
 </body>
 </html>
