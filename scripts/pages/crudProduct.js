@@ -17,6 +17,8 @@ export function normalizacion(){
         category: producto.fields.category,
         id: producto.fields.clientID,
     }))};
+
+const listadoProductos = normalizacion();
 /*console.log('listadoProductos:', normalizacion());*/
 /*const productoTest = {
   link: "https://www.shibuyacomicstore.com.ar/productos/pokemon-booster-pack-sv-journey-together-ingles-arte-aleatorio/",
@@ -34,8 +36,34 @@ export function normalizacion(){
 
 crearProducto(productoTest);*/
 /*editarProducto("rec5UQvwkEWajJwNu", {priceCurrent: "8000.00"});*/
-borrarProducto("recVdQYmBYGvAjDUk");
+/*borrarProducto("recVdQYmBYGvAjDUk");
 export function initCrudProduct() {
     return;
   
 }
+*/
+const table = document.getElementById('productos-table');
+table.innerHTML = '';
+
+productos.forEach(p => {
+  const row = document.createElement('tr');
+
+  const nombre = document.createElement('td');
+  nombre.textContent = p.nombre;
+
+  const precio = document.createElement('td');
+  precio.textContent = p.precio;
+
+  const actions = document.createElement('td');
+  const btnEdit = document.createElement('button');
+  btnEdit.textContent = 'Editar';
+  btnEdit.addEventListener('click', () => editar(p.id));
+
+  const btnDelete = document.createElement('button');
+  btnDelete.textContent = 'Eliminar';
+  btnDelete.addEventListener('click', () => eliminar(p.id));
+
+  actions.append(btnEdit, btnDelete);
+  row.append(nombre, precio, actions);
+  table.append(row);
+});
