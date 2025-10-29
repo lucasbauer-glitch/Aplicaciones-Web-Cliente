@@ -1,40 +1,28 @@
-import{obtenerProductos} from '../core/metodos.js';
-import {crearProducto} from '../core/metodos.js';
-import { editarProducto } from '../core/metodos.js';
-import { borrarProducto } from '../core/metodos.js';
-const productos = await obtenerProductos();
+import { obtenerProductos, crearProducto, editarProducto, borrarProducto } from '../core/metodos.js'
+const productosResponse = await obtenerProductos();
 
-export function normalizacion(){
-    return productos.records.map(producto => ({
-        airtableId: producto.id,
-        link: producto.fields.link,
-        title: producto.fields.title,
-        images: (producto.fields.images || "")
-              .split(",")
-              .map(url => url.trim())
-              .filter(url => url),
-        priceCurrent: producto.fields.priceCurrent,
-        priceOld: producto.fields.priceOld,
-        discount: producto.fields.discount,
-        brand: producto.fields.brand,
-        category: producto.fields.category,
-        id: producto.fields.clientID,
-    }))};
-
-/*const listadoProductos = normalizacion();
-console.log('listadoProductos:', normalizacion());*/
+export function normalizacion() {
+  return productosResponse.records.map(producto => ({
+    airtableId: producto.id,
+    link: producto.fields.link,
+    title: producto.fields.title,
+    images: (producto.fields.images || "")
+      .split(",")
+      .map(url => url.trim())
+      .filter(url => url),
+    priceCurrent: producto.fields.priceCurrent,
+    priceOld: producto.fields.priceOld,
+    discount: producto.fields.discount,
+    brand: producto.fields.brand,
+    category: producto.fields.category,
+    id: producto.fields.clientID,
+  }));
+}
 
 
 /*crearProducto(productoTest);*/
 /*editarProducto("rec5UQvwkEWajJwNu", {priceCurrent: "8000.00"});*/
-/*borrarProducto("recVdQYmBYGvAjDUk");
-export function initCrudProduct() {
-    return;
-  
-}
-*/
-export function initCrudProduct() {
-    /*const productoTest = {
+/*const productoTest = {
     link: "https://www.shibuyacomicstore.com.ar/productos/pokemon-booster-pack-sv-journey-together-ingles-arte-aleatorio/",
     title: "Pokémon Booster Pack S&V Obsidian Flames Inglés (Arte Aleatorio)",
     images:"https://acdn-us.mitiendanube.com/stores/001/989/991/products/pokemon_tcg_scarlet_violetobsid-dd8fdb7a4964322d0a17451143424423-1024-1024.png", 
@@ -47,6 +35,7 @@ export function initCrudProduct() {
     id: "199652518",
     airtableId: "rec5UQvwkEWajJwNu",
   };*/
+export function initCrudProduct() {
   const productoTest = normalizacion();
   console.log('productoTest:', productoTest);
   function renderCrudProduct(productos) {
@@ -90,8 +79,11 @@ export function initCrudProduct() {
 
       const btnDelete = document.createElement('button');
       btnDelete.textContent = 'Eliminar';
-      btnDelete.addEventListener('click', () => eliminar(p.airtableId));
-
+       btnDelete.addEventListener('click', () => {
+        borrarProducto(p.airtableId);
+        productos = productos.filter(prod => prod.airtableId !== p.airtableId);
+        renderCrudProduct();
+      });
       actions.append(btnEdit, btnDelete);
       row.append(img, nombre, precio, actions);
       table.append(row);

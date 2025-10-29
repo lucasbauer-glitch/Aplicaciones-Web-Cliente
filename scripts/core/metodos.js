@@ -1,11 +1,14 @@
+import {TOKEN_AIRTABLE} from '../env.js';
 
+const YOUR_BASE_ID = 'appNI85L891WjcI05';
+const YOUR_TABLE_NAME = 'tblSPTP0bSp5WNQ92';
 
 export async function obtenerProductos() {
      try {
     const respuesta = await fetch(`https://api.airtable.com/v0/${YOUR_BASE_ID}/${YOUR_TABLE_NAME}`, {
       method: 'GET',
       headers: {
-        Authorization: `Bearer ${TOKEN}`,
+        Authorization: `Bearer ${TOKEN_AIRTABLE}`,
       },
     });
 
@@ -23,7 +26,7 @@ export async function crearProducto(newproducto) {
       const respuesta = await fetch(`https://api.airtable.com/v0/${YOUR_BASE_ID}/${YOUR_TABLE_NAME}`, {
         method: 'POST',
         headers: {
-          Authorization: `Bearer ${TOKEN}`,
+          Authorization: `Bearer ${TOKEN_AIRTABLE}`,
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
@@ -60,7 +63,7 @@ export async function editarProducto(id, camposActualizados) {
       const respuesta = await fetch(`https://api.airtable.com/v0/${YOUR_BASE_ID}/${YOUR_TABLE_NAME}`, {
         method: 'PATCH',
         headers: {
-          Authorization: `Bearer ${TOKEN}`,
+          Authorization: `Bearer ${TOKEN_AIRTABLE}`,
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
@@ -84,7 +87,7 @@ export async function borrarProducto(id) {
       const respuesta = await fetch(`https://api.airtable.com/v0/${YOUR_BASE_ID}/${YOUR_TABLE_NAME}?${queryParams}`, {
         method: 'DELETE',
         headers: {
-          Authorization: `Bearer ${TOKEN}`,
+          Authorization: `Bearer ${TOKEN_AIRTABLE}`,
           'Content-Type': 'application/json',
         },
       });
