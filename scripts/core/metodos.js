@@ -1,7 +1,4 @@
-const TOKEN ="";
 
-const YOUR_BASE_ID = '';
-const YOUR_TABLE_NAME = '';
 
 export async function obtenerProductos() {
      try {
