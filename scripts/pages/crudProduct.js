@@ -1,4 +1,4 @@
-import { obtenerProductos, crearProducto, editarProducto, borrarProducto } from '../core/metodos.js'
+import { obtenerProductos, obtenerUnProducto, crearProducto, editarProducto, borrarProducto } from '../core/metodos.js'
 const productosResponse = await obtenerProductos();
 
 export function normalizacion() {
@@ -19,6 +19,7 @@ export function normalizacion() {
   }));
 }
 
+/*obtenerUnProducto("rec5UQvwkEWajJwNu");*/
 
 /*crearProducto(productoTest);*/
 /*editarProducto("rec5UQvwkEWajJwNu", {priceCurrent: "8000.00"});*/
@@ -35,9 +36,9 @@ export function normalizacion() {
     id: "199652518",
     airtableId: "rec5UQvwkEWajJwNu",
   };*/
-export function initCrudProduct() {
   const productoTest = normalizacion();
   console.log('productoTest:', productoTest);
+export function initCrudProduct() {
   function renderCrudProduct(productos) {
     const table = document.getElementById('productos-table');
     table.innerHTML = '';
@@ -59,7 +60,7 @@ export function initCrudProduct() {
       table.appendChild(head);
 
       const row = document.createElement('tr');
-
+      row.dataset.id = p.airtableId;
       const img = document.createElement('td');
       const imageElement = document.createElement('img');
       imageElement.src = p.images[0];
@@ -75,19 +76,38 @@ export function initCrudProduct() {
       const actions = document.createElement('td');
       const btnEdit = document.createElement('button');
       btnEdit.textContent = 'Editar';
-      btnEdit.addEventListener('click', () => editar(p.airtableId));
+      btnEdit.classList.add('btn-edit');
 
       const btnDelete = document.createElement('button');
       btnDelete.textContent = 'Eliminar';
-       btnDelete.addEventListener('click', () => {
-        borrarProducto(p.airtableId);
-        productos = productos.filter(prod => prod.airtableId !== p.airtableId);
-        renderCrudProduct();
-      });
+      btnDelete.classList.add('btn-delete');
+
       actions.append(btnEdit, btnDelete);
       row.append(img, nombre, precio, actions);
       table.append(row);
       });
   }
   renderCrudProduct(productoTest);
+
+  function initProductEvents(productos) {
+    const table = document.getElementById("productos-table");
+
+    table.addEventListener("click", async (e) => {
+      const row = e.target.closest("tr");
+      if (!row) return;
+      const id = row.dataset.id;
+
+      if (e.target.classList.contains("btn-delete")) {
+        await borrarProducto(id);
+        const nuevos = productos.filter(p => p.airtableId !== id);
+        renderTable(nuevos);
+      }
+
+      if (e.target.classList.contains("btn-edit")) {
+        console.log(id);
+        window.location.href = `edit.html?id=${id}`;
+      }
+    });
+  }
+  initProductEvents(productoTest);
 }
