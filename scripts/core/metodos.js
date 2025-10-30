@@ -20,6 +20,22 @@ export async function obtenerProductos() {
     console.error('Error al obtener los productos:', error);
   }
 }
+export async function obtenerUnProducto(id) {
+     try {
+    const respuesta = await fetch(`https://api.airtable.com/v0/${YOUR_BASE_ID}/${YOUR_TABLE_NAME}/${id}`, {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${TOKEN_AIRTABLE}`,
+      },
+    });
+
+    const datos = await respuesta.json();
+    console.log('Producto:', datos);
+    return datos;
+  } catch (error) {
+    console.error('Error al obtener el producto:', error);
+  }
+}
 
 export async function crearProducto(newproducto) {
     try {

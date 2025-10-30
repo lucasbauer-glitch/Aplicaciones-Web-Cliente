@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Editar producto</title>
+</head>
+<body>
+  <h1>Editar producto</h1>
+  <form id="form-edit">
+    <label>Título</label>
+    <input type="text" name="title" required>
+
+    <label>Precio actual</label>
+    <input type="text" name="priceCurrent">
+
+    <label>Precio anterior</label>
+    <input type="text" name="priceOld">
+
+    <label>Descuento</label>
+    <input type="text" name="discount">
+
+    <label>Marca</label>
+    <input type="text" name="brand">
+
+    <label>Categoría</label>
+    <input type="text" name="category">
+
+    <label>Link</label>
+    <input type="url" name="link">
+
+    <button type="submit">Guardar</button>
+  </form>
+
+  <script type="module" src="./scripts/pages/edit.js"></script>
+</body>
+</html>
