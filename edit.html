@@ -2,33 +2,37 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Editar producto</title>
+  <link rel="stylesheet" href="./css/styles.css">
+  <link rel="stylesheet" href="./css/mobile.css">
 </head>
-<body>
-  <h1>Editar producto</h1>
+<body id="edit-body">
   <form id="form-edit">
-    <label>Título</label>
-    <input type="text" name="title" required>
+    <h1 id="edit-title">Editar producto</h1>
 
-    <label>Precio actual</label>
-    <input type="text" name="priceCurrent">
+    <label for="edit-title-input">Título</label>
+    <input id="edit-title-input" type="text" name="title" required>
 
-    <label>Precio anterior</label>
-    <input type="text" name="priceOld">
+    <label for="edit-price-current">Precio actual</label>
+    <input id="edit-price-current" type="text" name="priceCurrent">
 
-    <label>Descuento</label>
-    <input type="text" name="discount">
+    <label for="edit-price-old">Precio anterior</label>
+    <input id="edit-price-old" type="text" name="priceOld">
 
-    <label>Marca</label>
-    <input type="text" name="brand">
+    <label for="edit-discount">Descuento</label>
+    <input id="edit-discount" type="text" name="discount">
 
-    <label>Categoría</label>
-    <input type="text" name="category">
+    <label for="edit-brand">Marca</label>
+    <input id="edit-brand" type="text" name="brand">
 
-    <label>Link</label>
-    <input type="url" name="link">
+    <label for="edit-category">Categoría</label>
+    <input id="edit-category" type="text" name="category">
 
-    <button type="submit">Guardar</button>
+    <label for="edit-link">Link</label>
+    <input id="edit-link" type="url" name="link">
+
+    <button id="edit-submit" type="submit">Guardar</button>
   </form>
 
   <script type="module" src="./scripts/pages/edit.js"></script>

@@ -168,4 +168,14 @@
   #aboutUs-container {
     padding: 20px;
   }
+  #form-edit {
+    padding: 20px;
+  }
+  #edit-title {
+    font-size: 1.3rem;
+  }
+  #edit-submit {
+    font-size: 0.95rem;
+    padding: 10px;
+  }
 }
