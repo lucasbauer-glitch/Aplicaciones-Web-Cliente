@@ -917,6 +917,82 @@ footer {
   margin-bottom: 15px;
   text-align: center;
 }
+/*page edit*/
+#edit-body * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+#edit-body {
+  background-color: #f7f8fa;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+
+#form-edit {
+  background-color: #fff;
+  padding: 25px 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+
+#edit-title {
+  text-align: center;
+  margin-bottom: 10px;
+  color: #333;
+  font-size: 1.5rem;
+}
+
+
+#form-edit label {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+#form-edit input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  transition: border-color 0.3s;
+}
+
+#form-edit input:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 3px rgba(0, 123, 255, 0.2);
+}
+
+
+#edit-submit {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 12px;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#edit-submit:hover {
+  background-color: #0056b3;
+}
+
 /*Tablet */
 @media (min-width: 501px) and (max-width: 1023px) {
   .head-nav {
