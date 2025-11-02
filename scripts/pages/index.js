@@ -1,8 +1,12 @@
 import { slider } from '../components/slider.js';
-import { products } from '../productsData.js';
+import {obtenerProductos} from '../core/metodos.js';
+/*import { products } from '../productsData.js';*/
 import { initCart } from '../cart.js';
 import { createProductElement } from '../components/productCard.js';
+import {normalizacion} from './crudProduct.js';
 const cartModule = initCart();
+const productsData = await obtenerProductos();
+const products = normalizacion(productsData);
 export function initIndex() {
   slider();
 

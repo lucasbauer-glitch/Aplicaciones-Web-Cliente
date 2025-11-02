@@ -21,7 +21,7 @@ export function normalizacion() {
 }
 
   const productoTest = normalizacion();
-  console.log('productoTest:', productoTest);
+  
 export function initCrudProduct() {
   function renderCrudProduct(productos) {
     const table = document.getElementById('productos-table');

@@ -1,9 +1,13 @@
-import { products } from '../productsData.js';
 import { initCart } from '../cart.js';
 import { renderFilterOptions } from '../components/filterList.js';
 import { createProductElement } from '../components/productCard.js';
 import { getUniqueValues } from "../core/utils.js";
 import { filteredProducts } from '../components/setupFilters.js';
+import { obtenerProductos } from '../core/metodos.js';
+import { normalizacion } from './crudProduct.js';
+
+const productsData = await obtenerProductos();
+const products = normalizacion(productsData.records);
 const cartModule = initCart();
 
 export function initAllProduct() {
