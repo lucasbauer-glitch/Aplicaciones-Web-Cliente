@@ -57,7 +57,8 @@ export async function crearProducto(newproducto) {
               description: newproducto.description,
               brand: newproducto.brand,
               category: newproducto.category,
-              id: newproducto.id
+              clientID: newproducto.clientID,
+              stock: newproducto.stock,
             },
           },
         ],

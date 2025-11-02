@@ -1,4 +1,4 @@
-import { obtenerProductos, obtenerUnProducto, crearProducto, editarProducto, borrarProducto } from '../core/metodos.js'
+import { obtenerProductos, crearProducto, borrarProducto } from '../core/metodos.js'
 const productosResponse = await obtenerProductos();
 
 export function normalizacion() {
@@ -16,13 +16,13 @@ export function normalizacion() {
     brand: producto.fields.brand,
     category: producto.fields.category,
     id: producto.fields.clientID,
+    stock: producto.fields.stock,
   }));
 }
 
-/*obtenerUnProducto("rec5UQvwkEWajJwNu");*/
 
 /*crearProducto(productoTest);*/
-/*editarProducto("rec5UQvwkEWajJwNu", {priceCurrent: "8000.00"});*/
+
 /*const productoTest = {
     link: "https://www.shibuyacomicstore.com.ar/productos/pokemon-booster-pack-sv-journey-together-ingles-arte-aleatorio/",
     title: "Pokémon Booster Pack S&V Obsidian Flames Inglés (Arte Aleatorio)",
@@ -48,11 +48,14 @@ export function initCrudProduct() {
     thImg.textContent = 'Imagen';
     const thNombre = document.createElement('th');
     thNombre.textContent = 'Nombre';
+    const thStock = document.createElement('th');
+    thStock.textContent = 'Stock';
     const thPrecio = document.createElement('th');
     thPrecio.textContent = 'Precio';
     const thAcciones = document.createElement('th');
     thAcciones.textContent = 'Acciones';
-    rowhead.append(thImg, thNombre, thPrecio, thAcciones);
+
+    rowhead.append(thImg, thNombre, thStock, thPrecio, thAcciones);
     head.appendChild(rowhead);
 
     productos.forEach(p => {
@@ -65,25 +68,41 @@ export function initCrudProduct() {
       const imageElement = document.createElement('img');
       imageElement.src = p.images[0];
       imageElement.alt = p.title;
-      imageElement.style.width = '50px';
+      img.classList.add('producto-img');
       img.appendChild(imageElement);
       const nombre = document.createElement('td');
       nombre.textContent = p.title;
-
+      const stock = document.createElement('td');
+      stock.textContent = p.stock;
       const precio = document.createElement('td');
       precio.textContent = p.priceCurrent;
 
       const actions = document.createElement('td');
       const btnEdit = document.createElement('button');
-      btnEdit.textContent = 'Editar';
       btnEdit.classList.add('btn-edit');
+      btnEdit.innerHTML = `
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 20h9"/>
+          <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4Z"/>
+        </svg>
+      `;
+
 
       const btnDelete = document.createElement('button');
-      btnDelete.textContent = 'Eliminar';
       btnDelete.classList.add('btn-delete');
+      btnDelete.innerHTML = `
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="3 6 5 6 21 6"/>
+          <path d="M19 6l-1 14H6L5 6m3-3h8l1 3H7l1-3Z"/>
+          <line x1="10" y1="11" x2="10" y2="17"/>
+          <line x1="14" y1="11" x2="14" y2="17"/>
+        </svg>
+      `;
 
       actions.append(btnEdit, btnDelete);
-      row.append(img, nombre, precio, actions);
+      row.append(img, nombre, stock, precio, actions);
       table.append(row);
       });
   }
@@ -100,12 +119,18 @@ export function initCrudProduct() {
       if (e.target.classList.contains("btn-delete")) {
         await borrarProducto(id);
         const nuevos = productos.filter(p => p.airtableId !== id);
-        renderTable(nuevos);
+        renderCrudProduct(nuevos);
       }
 
       if (e.target.classList.contains("btn-edit")) {
         console.log(id);
         window.location.href = `edit.html?id=${id}`;
+      }
+      
+    });
+    addEventListener("click", (e) => {
+      if (e.target.classList.contains("btn-create")) {
+        window.location.href = `edit.html`;
       }
     });
   }

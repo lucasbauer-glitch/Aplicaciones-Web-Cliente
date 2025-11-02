@@ -30,7 +30,7 @@ export function initHeader() {
           </div>
 
           <div class="actions-col">
-            <a href="/account/login/" class="btn-user" aria-label="Cuenta">
+            <a href="login.html" class="btn-user" aria-label="Cuenta">
               <svg><use xlink:href="#user"></use></svg>
             </a>
           </div>

@@ -992,6 +992,93 @@ footer {
 #edit-submit:hover {
   background-color: #0056b3;
 }
+/*crud productos*/
+#crudproductos {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 20px;
+  background-color: #f9fafb;
+  color: #333;
+}
+
+#title-crud {
+  text-align: center;
+  color: #222;
+  margin-bottom: 20px;
+}
+
+table {
+  margin: 0 auto;
+  width: 80%;
+  border-collapse: collapse;
+  background-color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+thead {
+  background-color: #007bff;
+  color: white;
+}
+
+th, td {
+  text-align: center;
+  padding: 12px 15px;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.producto-img img{
+  width: 60px;
+  height: auto;
+  border-radius: 4px;
+}
+
+.btn-create {
+  display: block;
+  margin-left: auto;
+  padding: 10px 20px;
+  background-color: #328d08;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+.btn-edit, .btn-delete {
+  padding: 6px 12px;
+  margin: 3px 3px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s;
+}
+.btn-edit svg, .btn-delete svg, .btn-create svg {
+  height: 24px;
+  width: 24px;
+}
+.btn-edit {
+  background-color: #28a745;
+  color: white;
+}
+
+.btn-edit:hover {
+  background-color: #218838;
+}
+
+.btn-delete {
+  background-color: #dc3545;
+  color: white;
+}
+
+.btn-delete:hover {
+  background-color: #c82333;
+}
 
 /*Tablet */
 @media (min-width: 501px) and (max-width: 1023px) {
