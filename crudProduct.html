@@ -27,14 +27,15 @@
       <line x1="8" y1="12" x2="16" y2="12"/>
     </symbol>
   </svg>
-
-  <button class="btn-create">
-    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
-      <use href="#createsvg"></use>
-    </svg>
-  </button>
-  <input id="search-product">
   <h1 id="title-crud">Gestión de Productos</h1>
+  <div class ="crud-header">
+    <input id="search-product">
+    <button class="btn-create">
+      <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+        <use href="#createsvg"></use>
+      </svg>
+    </button>
+  </div>
   <table id="productos-table"></table>
 <script type="module" src="scripts/main.js"></script>
 </body>

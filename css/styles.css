@@ -1036,11 +1036,23 @@ tr:nth-child(even) {
   height: auto;
   border-radius: 4px;
 }
-
+.crud-header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 20px;
+  gap: 12px;
+}
+#search-product {
+  flex: 0 1 20%;
+  padding: 8px 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
 .btn-create {
   display: block;
-  margin-left: auto;
-  padding: 10px 20px;
+  padding: 10px 14px 8px 14px;
   background-color: #328d08;
   color: white;
   border: none;

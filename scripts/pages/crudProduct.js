@@ -1,4 +1,4 @@
-import { obtenerProductos, crearProducto, borrarProducto } from '../core/metodos.js'
+import { obtenerProductos, borrarProducto } from '../core/metodos.js'
 const productosResponse = await obtenerProductos();
 
 export function normalizacion() {
@@ -20,22 +20,6 @@ export function normalizacion() {
   }));
 }
 
-
-/*crearProducto(productoTest);*/
-
-/*const productoTest = {
-    link: "https://www.shibuyacomicstore.com.ar/productos/pokemon-booster-pack-sv-journey-together-ingles-arte-aleatorio/",
-    title: "Pokémon Booster Pack S&V Obsidian Flames Inglés (Arte Aleatorio)",
-    images:"https://acdn-us.mitiendanube.com/stores/001/989/991/products/pokemon_tcg_scarlet_violetobsid-dd8fdb7a4964322d0a17451143424423-1024-1024.png", 
-    priceCurrent: "7650.00",
-    priceOld: "8500.00",
-    discount: "-10% OFF",
-    description: "Description Booster Pack",
-    brand: "Nintendo",
-    category: "Cartas",
-    id: "199652518",
-    airtableId: "rec5UQvwkEWajJwNu",
-  };*/
   const productoTest = normalizacion();
   console.log('productoTest:', productoTest);
 export function initCrudProduct() {
@@ -131,6 +115,15 @@ export function initCrudProduct() {
     addEventListener("click", (e) => {
       if (e.target.classList.contains("btn-create")) {
         window.location.href = `edit.html`;
+      }
+    });
+    addEventListener("input", (e) => {
+      if (e.target.id === "search-product") {
+        const searchTerm = e.target.value.toLowerCase();
+        const filteredProducts = productos.filter(p =>
+          p.title.toLowerCase().includes(searchTerm)
+        );
+        renderCrudProduct(filteredProducts);
       }
     });
   }

@@ -1,5 +1,5 @@
-import {TOKEN_AIRTABLE} from '../env.js';
-
+/*import {TOKEN_AIRTABLE} from '../env.js';*/
+const TOKEN_AIRTABLE ="patDxOzwRcvMJdX26.657fe914ec08c44dd3cc8d8734b8a7c0fe7c990594c69ee6510c6bf760dc7c24";
 const YOUR_BASE_ID = 'appNI85L891WjcI05';
 const YOUR_TABLE_NAME = 'tblSPTP0bSp5WNQ92';
 
