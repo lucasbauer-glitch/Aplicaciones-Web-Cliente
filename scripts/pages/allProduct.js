@@ -6,13 +6,13 @@ import { filteredProducts } from '../components/setupFilters.js';
 import { obtenerProductos } from '../core/metodos.js';
 import { normalizacion } from './crudProduct.js';
 
-const productsData = await obtenerProductos();
-const products = normalizacion(productsData.records);
+
 const cartModule = initCart();
 
-export function initAllProduct() {
+export async function initAllProduct() {
   const allContainer = ".all-product-container";
-
+  const productsData = await obtenerProductos();
+  const products = normalizacion(productsData.records);
   function renderProducts(containerSelector, productList = products) {
     const container = document.querySelector(containerSelector);
     if (!container) return;
