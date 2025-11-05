@@ -4,15 +4,15 @@ import { createProductElement } from '../components/productCard.js';
 import { getUniqueValues } from "../core/utils.js";
 import { filteredProducts } from '../components/setupFilters.js';
 import { obtenerProductos } from '../core/metodos.js';
-import { normalizacion } from './crudProduct.js';
+import { normalizacion } from '../core/utils.js';
 
 
 
 export async function initAllProduct() {
 
   const productsData = await obtenerProductos();
-  const products = normalizacion(productsData.records);
-  const cartModule = initCart();
+  const products = await normalizacion(productsData);
+  const cartModule = await initCart();
 
   function renderProducts(productList = products) {
     const container = document.querySelector(".all-product-container");

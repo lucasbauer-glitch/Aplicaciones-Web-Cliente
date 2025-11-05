@@ -3,7 +3,7 @@ import {obtenerProductos} from '../core/metodos.js';
 import { initCart } from '../cart.js';
 import { createProductElement } from '../components/productCard.js';
 
-const cartModule = initCart();
+const cartModule = await initCart();
 
 function normalizacion(productosResponse) {
   return productosResponse.records.map(producto => ({

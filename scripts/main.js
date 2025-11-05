@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   
   const page = document.body.dataset.page;
   if (page !== 'login' && page !== 'crudProduct') {
-    const cartModule = initCart();
+    const cartModule = await initCart();
     initHeader();
     initNavBar();
     searchproducts();
