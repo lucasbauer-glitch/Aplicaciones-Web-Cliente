@@ -6,6 +6,7 @@ import { filteredProducts } from '../components/setupFilters.js';
 import { obtenerProductos } from '../core/metodos.js';
 import { normalizacion } from './crudProduct.js';
 
+<<<<<<< HEAD
 
 
 export async function initAllProduct() {
@@ -16,6 +17,17 @@ export async function initAllProduct() {
 
   function renderProducts(productList = products) {
     const container = document.querySelector(".all-product-container");
+=======
+
+const cartModule = initCart();
+
+export async function initAllProduct() {
+  const allContainer = ".all-product-container";
+  const productsData = await obtenerProductos();
+  const products = normalizacion(productsData.records);
+  function renderProducts(containerSelector, productList = products) {
+    const container = document.querySelector(containerSelector);
+>>>>>>> 1d14b0c0cfcd9d996360b9e31cb4b2451a6d5728
     if (!container) return;
 
     container.textContent = "";
