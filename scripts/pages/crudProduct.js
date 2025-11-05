@@ -47,12 +47,15 @@ function renderCrudProduct(productos) {
     img.appendChild(imageElement);
 
     const nombre = document.createElement("td");
+    nombre.datalabel = "Nombre";
     nombre.textContent = p.title;
 
     const stock = document.createElement("td");
+    stock.datalabel = "Stock";
     stock.textContent = p.stock;
 
     const precio = document.createElement("td");
+    precio.datalabel = "Precio";
     precio.textContent = p.priceCurrent;
 
     const actions = document.createElement("td");
@@ -81,6 +84,9 @@ function renderCrudProduct(productos) {
 
     actions.append(btnEdit, btnDelete);
     row.append(img, nombre, stock, precio, actions);
+    row.setAttribute("data-nombre", p.title);
+    row.setAttribute("data-stock", p.stock);
+    row.setAttribute("data-precio", p.priceCurrent);
     body.appendChild(row);
   });
 

@@ -1031,11 +1031,12 @@ tr:nth-child(even) {
   background-color: #f2f2f2;
 }
 
-.producto-img img{
+.producto-img img {
   width: 60px;
   height: auto;
   border-radius: 4px;
 }
+
 .crud-header {
   display: flex;
   justify-content: space-around;
@@ -1043,6 +1044,7 @@ tr:nth-child(even) {
   margin-bottom: 20px;
   gap: 12px;
 }
+
 #search-product {
   flex: 0 1 20%;
   padding: 8px 12px;
@@ -1050,6 +1052,7 @@ tr:nth-child(even) {
   border: 1px solid #ccc;
   border-radius: 4px;
 }
+
 .btn-create {
   display: block;
   padding: 10px 14px 8px 14px;
@@ -1061,6 +1064,7 @@ tr:nth-child(even) {
   font-size: 16px;
   transition: background-color 0.3s;
 }
+
 .btn-edit, .btn-delete {
   padding: 6px 12px;
   margin: 3px 3px;
@@ -1070,10 +1074,12 @@ tr:nth-child(even) {
   font-size: 14px;
   transition: background-color 0.3s;
 }
+
 .btn-edit svg, .btn-delete svg, .btn-create svg {
   height: 24px;
   width: 24px;
 }
+
 .btn-edit {
   background-color: #28a745;
   color: white;
