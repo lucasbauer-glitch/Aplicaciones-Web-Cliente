@@ -6,15 +6,16 @@ import { filteredProducts } from '../components/setupFilters.js';
 import { obtenerProductos } from '../core/metodos.js';
 import { normalizacion } from './crudProduct.js';
 
-const productsData = await obtenerProductos();
-const products = normalizacion(productsData.records);
-const cartModule = initCart();
 
-export function initAllProduct() {
-  const allContainer = ".all-product-container";
 
-  function renderProducts(containerSelector, productList = products) {
-    const container = document.querySelector(containerSelector);
+export async function initAllProduct() {
+
+  const productsData = await obtenerProductos();
+  const products = normalizacion(productsData.records);
+  const cartModule = initCart();
+
+  function renderProducts(productList = products) {
+    const container = document.querySelector(".all-product-container");
     if (!container) return;
 
     container.textContent = "";
@@ -28,7 +29,7 @@ export function initAllProduct() {
     forms.forEach(cartModule.addToCartHandler);
   }
   
-  renderProducts(allContainer);
+  renderProducts();
 
   //filtros para allProducts.html
   const modal = document.getElementById("filterModal");
@@ -49,7 +50,8 @@ export function initAllProduct() {
       modal.style.display = "none";
     }  
   });
-
+  const forms = document.querySelectorAll(".product-form");
+  forms.forEach(cartModule.addToCartHandler);
   const categories = getUniqueValues("category");
   const brands = getUniqueValues("brand");
   renderFilterOptions(filtersContainer, "category", "Categoría", categories); 

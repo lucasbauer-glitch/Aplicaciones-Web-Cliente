@@ -15,7 +15,7 @@ export function filteredProducts(containerSelector, renderProductsFn) {
             if (filterValue !== "all") {
                 filtered = products.filter(p => p[filterType] === filterValue);
             }
-            renderProductsFn(".all-product-container", filtered);
+            renderProductsFn(filtered);
             return;
         };
     

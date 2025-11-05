@@ -1,41 +1,66 @@
 import { slider } from '../components/slider.js';
 import {obtenerProductos} from '../core/metodos.js';
-/*import { products } from '../productsData.js';*/
 import { initCart } from '../cart.js';
 import { createProductElement } from '../components/productCard.js';
-import {normalizacion} from './crudProduct.js';
+
 const cartModule = initCart();
-const productsData = await obtenerProductos();
-const products = normalizacion(productsData);
-export function initIndex() {
-  slider();
 
-  //refactorizado para grilla de productos
-  function renderProducts(containerSelector, productList = products) {
-    const container = document.querySelector(containerSelector);
-    if (!container) return;
-    
-    productList.forEach((prod) => {
-      const el = createProductElement(prod);
-      container.appendChild(el);
-    });
-    
-    const btnLeft = document.querySelector(".btn-left");
-    const btnRight = document.querySelector(".btn-right");
-    if (btnLeft && btnRight) {
-      btnLeft.addEventListener("click", () => {
-        container.scrollBy({ left: -300, behavior: "smooth" });
-      });
+function normalizacion(productosResponse) {
+  return productosResponse.records.map(producto => ({
+    airtableId: producto.id,
+    link: producto.fields.link,
+    title: producto.fields.title,
+    images: (producto.fields.images || "")
+      .split(",")
+      .map(url => url.trim())
+      .filter(url => url),
+    priceCurrent: producto.fields.priceCurrent,
+    priceOld: producto.fields.priceOld,
+    discount: producto.fields.discount,
+    brand: producto.fields.brand,
+    category: producto.fields.category,
+    id: producto.fields.clientID,
+    stock: producto.fields.stock,
+  }));
+}
 
-      btnRight.addEventListener("click", () => {
-        container.scrollBy({ left: 300, behavior: "smooth" });
-      });
-    }
-    
-    const forms = document.querySelectorAll(".product-form");
-    forms.forEach(cartModule.addToCartHandler);
-  }
+export async function initIndex() {
   
-    renderProducts(".products-slid");
+    const container = document.querySelector(".products-slid");
+    if (!container) return;
 
-};
+    container.innerHTML = "<p class='loading-text'>Cargando productos...</p>";
+
+    try {
+      const productsData = await obtenerProductos();
+      const products = normalizacion(productsData);
+
+      container.innerHTML = "";
+      
+      products.forEach((prod) => {
+        const el = createProductElement(prod);
+        container.appendChild(el);
+      });
+
+      slider();
+
+      const btnLeft = document.querySelector(".btn-left");
+      const btnRight = document.querySelector(".btn-right");
+      if (btnLeft && btnRight) {
+        btnLeft.addEventListener("click", () => {
+          container.scrollBy({ left: -300, behavior: "smooth" });
+        });
+
+        btnRight.addEventListener("click", () => {
+          container.scrollBy({ left: 300, behavior: "smooth" });
+        });
+      }
+    
+      const forms = document.querySelectorAll(".product-form");
+      forms.forEach(cartModule.addToCartHandler);
+    } catch (err) {
+      console.error("Error cargando productos:", err);
+      container.innerHTML = "<p class='error-text'>No se pudieron cargar los productos.</p>";
+  }
+}
+

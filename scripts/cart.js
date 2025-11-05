@@ -1,4 +1,26 @@
-import { products } from "./productsData.js";
+//import { products } from "./productsData.js";
+import { obtenerProductos } from "./core/metodos.js";
+const productosResponse = await obtenerProductos();
+function normalizacion() {
+  return productosResponse.records.map(producto => ({
+    airtableId: producto.id,
+    link: producto.fields.link,
+    title: producto.fields.title,
+    images: (producto.fields.images || "")
+      .split(",")
+      .map(url => url.trim())
+      .filter(url => url),
+    priceCurrent: producto.fields.priceCurrent,
+    priceOld: producto.fields.priceOld,
+    discount: producto.fields.discount,
+    brand: producto.fields.brand,
+    category: producto.fields.category,
+    id: producto.fields.clientID,
+    stock: producto.fields.stock,
+  }));
+}
+const products = normalizacion();
+
 export function initCart() {
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
 

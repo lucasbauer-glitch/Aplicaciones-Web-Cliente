@@ -6,7 +6,7 @@ import { initFooter } from './components/footer.js';
 
 
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
   
   const page = document.body.dataset.page;
   if (page !== 'login' && page !== 'crudProduct') {
@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   switch (page) {
     case 'index':
-      import('./pages/index.js').then(m => m.initIndex());
+      (await import('./pages/index.js').then(m => m.initIndex()));
       break;
     case 'allProduct':
       import('./pages/allProduct.js').then(m => m.initAllProduct());
