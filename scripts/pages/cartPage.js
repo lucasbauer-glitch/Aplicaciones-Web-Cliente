@@ -1,62 +1,112 @@
 import { formatPrice } from "../core/utils.js";
 import { initCart } from "../cart.js";
-const cartModule = initCart();
+import { obtenerProductos } from "../core/metodos.js";
+import { normalizacion } from "../core/utils.js";
 
-  const cartContainer = document.getElementById("cart-container");
-  const cartSummary = document.getElementById("cart-summary");
+const cartModule =  await initCart();
+const { showCartAlert } = cartModule;
 
-  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+const cartContainer = document.getElementById("cart-container");
+const cartSummary = document.getElementById("cart-summary");
 
-  function renderCart() {
-    cartContainer.innerHTML = "";
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-    if (cart.length === 0) {
-      cartContainer.innerHTML = "<p>Tu carrito está vacío 🛒</p>";
-      cartSummary.innerHTML = "";
-      return;
-    }
+async function getProductStock(id) {
+  const productosResponse = await obtenerProductos();
+  const products = await normalizacion(productosResponse);
+  const product = products.find(p => p.id === id);
+  return product ? product.stock : null;
+}
 
-    let total = 0;
+async function renderCart() {
+  cartContainer.innerHTML = "";
 
-    cart.forEach((item, index) => {
-      const itemTotal = item.quantity * parseFloat(item.priceCurrent);
-      total += itemTotal;
+  if (cart.length === 0) {
+    cartContainer.innerHTML = "<p>Tu carrito está vacío 🛒</p>";
+    cartSummary.innerHTML = "";
+    return;
+  }
 
-      const productDiv = document.createElement("div");
-      productDiv.classList.add("cart-item");
-      productDiv.innerHTML = `
-        <img src="${item.image}">
-        <div class="cart-item-details">
-          <h4>${item.title}</h4>
-          <button class="btn-remove" data-index="${index}">Eliminar</button>
-        </div>
-        <div class="cart-item-quantity ">
-          <button type="button" class="quantity-decrease">-</button>
-          <input type="number" name="quantity" value=${item.quantity} min="1">
-          <button type="button" class="quantity-increase">+</button>
-        </div>
-        <div class ="cart-item-price">
-          <p>${formatPrice(item.quantity * item.priceCurrent)}</p>
-        </div>
-        
-        
-      `;
-      cartContainer.appendChild(productDiv);
-    });
+  let total = 0;
 
-    cartSummary.innerHTML = `
-      <h2>Total: $${total.toLocaleString("es-AR")}</h2>
-      <button id="btn-buy">Finalizar compra</button>
+  for (const [index, item] of cart.entries()) {
+    const itemTotal = item.quantity * parseFloat(item.priceCurrent);
+    total += itemTotal;
+
+    const productStock = await getProductStock(item.id);
+
+    const productDiv = document.createElement("div");
+    productDiv.classList.add("cart-item");
+    productDiv.innerHTML = `
+      <img src="${item.image}">
+      <div class="cart-item-details">
+        <h4>${item.title}</h4>
+        <button class="btn-remove" data-index="${index}">Eliminar</button>
+      </div>
+      <div class="cart-item-quantity">
+        <button type="button" class="quantity-decrease">-</button>
+        <input type="number" name="quantity" value="${item.quantity}" min="1" max="${productStock}">
+        <button type="button" class="quantity-increase">+</button>
+      </div>
+      <div class="cart-item-price">
+        <p>${formatPrice(itemTotal)}</p>
+      </div>
     `;
 
-    document.querySelectorAll(".btn-remove").forEach(btn => {
-        btn.addEventListener("click", (e) => {
-          const index = e.target.dataset.index;
-          cart.splice(index, 1);
-          localStorage.setItem("cart", JSON.stringify(cart))
-          renderCart();
-          cartModule.updateCartBadge();
-        });
-      });
+    cartContainer.appendChild(productDiv);
+
+    const inputQuantity = productDiv.querySelector("input[name=quantity]");
+    const btnDecrease = productDiv.querySelector(".quantity-decrease");
+    const btnIncrease = productDiv.querySelector(".quantity-increase");
+
+    btnDecrease.addEventListener("click", () => {
+      const newValue = Math.max(1, parseInt(inputQuantity.value) - 1);
+      inputQuantity.value = newValue;
+      item.quantity = newValue;
+      localStorage.setItem("cart", JSON.stringify(cart));
+      renderCart();
+    });
+
+    btnIncrease.addEventListener("click", () => {
+      const newValue = parseInt(inputQuantity.value) + 1;
+      if (newValue > productStock) {
+        showCartAlert(`Solo hay ${productStock} unidades disponibles de "${item.title}".`);
+        return;
+      }
+      inputQuantity.value = newValue;
+      item.quantity = newValue;
+      localStorage.setItem("cart", JSON.stringify(cart));
+      renderCart();
+    });
+
+    inputQuantity.addEventListener("change", () => {
+      let newValue = parseInt(inputQuantity.value);
+      if (isNaN(newValue) || newValue < 1) newValue = 1;
+      if (newValue > productStock) {
+        showCartAlert(`Stock máximo: ${productStock} unidades.`);
+        newValue = productStock;
+      }
+      inputQuantity.value = newValue;
+      item.quantity = newValue;
+      localStorage.setItem("cart", JSON.stringify(cart));
+      renderCart();
+    });
   }
-  renderCart();
+
+  cartSummary.innerHTML = `
+    <h2>Total: $${total.toLocaleString("es-AR")}</h2>
+    <button id="btn-buy">Finalizar compra</button>
+  `;
+
+  document.querySelectorAll(".btn-remove").forEach(btn => {
+    btn.addEventListener("click", (e) => {
+      const index = e.target.dataset.index;
+      cart.splice(index, 1);
+      localStorage.setItem("cart", JSON.stringify(cart));
+      renderCart();
+      cartModule.updateCartBadge();
+    });
+  });
+}
+
+renderCart();

@@ -1,10 +1,25 @@
-import { products } from './productsData.js';
+
 import { formatPrice } from './core/utils.js';
 import { initCart } from './cart.js';
-const cartModule = initCart();
+import { obtenerUnProducto } from './core/metodos.js';
+const cartModule = await initCart();
+
+const params = new URLSearchParams(window.location.search);
+const id = params.get("id");
+const product = await obtenerUnProducto(id);
+
 
 export function initProductDetails() {
   function renderProductDescription(product) {
+
+    const images = Array.isArray(product.images)
+    if (typeof product.images === "string") {
+    return product.images
+      .split(",")
+      .map(img => img.trim())
+      .filter(img => img.length > 0);
+    }
+
     return `
       <section class="description-section">
         <div class="container-description">
@@ -13,11 +28,11 @@ export function initProductDetails() {
               <div class="product-images">
                 <div class="main-image">
                   <img id="description-section-product-image" 
-                    src="${product.images[0]}" 
+                    src="${images[0]}" 
                     alt="${product.title}">
                 </div>
                 <div class="thumbnails">
-                  ${product.images
+                  ${images
                     .map(
                       (img, index) =>
                         `<img src="${img}" alt="Miniatura ${index + 1}" class="thumbnail">`
@@ -54,13 +69,8 @@ export function initProductDetails() {
   }
 
   
-  const params = new URLSearchParams(window.location.search);
-  const id = params.get("id");
-
-  const product = products.find(p => p.id === id);
-
   if (product) {
-    document.getElementById("product-container").innerHTML = renderProductDescription(product);
+    document.getElementById("product-container").innerHTML = renderProductDescription(product.fields);
 
     const mainImage = document.getElementById("description-section-product-image");
     const thumbs = document.querySelectorAll(".thumbnail");

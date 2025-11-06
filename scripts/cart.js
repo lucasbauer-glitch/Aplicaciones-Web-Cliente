@@ -31,12 +31,30 @@ export async function initCart() {
       const product = products.find(p => p.id === id);
       if (!product) return;
 
+      if (quantityInput) {
+      quantityInput.max = product.stock; 
+      }
+
       const existing = cart.find(item => item.id === id);
+      const totalRequested = existing
+      ? existing.quantity + quantity
+      : quantity;
+
+      if (totalRequested > product.stock) {
+        const remaining = product.stock - (existing?.quantity || 0);
+
+        showCartAlert(
+          remaining > 0
+            ? `Solo quedan ${remaining} unidades disponibles de "${product.title}".`
+            : `No hay más stock disponible de "${product.title}".`
+        );
+        return;
+      }
       if (existing) {
         existing.quantity += quantity;
       } else {
         cart.push({
-          id: product.id,
+          id: product.airtableId,
           title: product.title,
           quantity: quantity,
           priceCurrent: product.priceCurrent,

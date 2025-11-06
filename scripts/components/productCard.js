@@ -1,6 +1,6 @@
 import { formatPrice } from '../core/utils.js';
 
-export function createProductElement({ title, images, priceCurrent, priceOld, discount, id }) {
+export function createProductElement({ title, images, priceCurrent, priceOld, discount, airtableId: id }) {
     const product = document.createElement("div");
     product.classList.add("product");
 
