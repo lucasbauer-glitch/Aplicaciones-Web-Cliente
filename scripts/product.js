@@ -1,8 +1,6 @@
 
 import { formatPrice } from './core/utils.js';
-import { initCart } from './cart.js';
 import { obtenerUnProducto } from './core/metodos.js';
-const cartModule = await initCart();
 
 const params = new URLSearchParams(window.location.search);
 const id = params.get("id");
@@ -12,7 +10,7 @@ export async function normalizacionUnProducto(response) {
   try {
     const producto = response.fields;
     return {
-      airtableId: producto.id,
+      airtableId: response.id,
       link: producto.link,
       title: producto.title,
       images: (producto.images || "")
@@ -36,7 +34,7 @@ export async function normalizacionUnProducto(response) {
 
 const product = await normalizacionUnProducto(response);
 
-export function initProductDetails() {
+export function initProductDetails(cartModule) {
   function renderProductDescription(product) {
     
     return `
@@ -71,7 +69,7 @@ export function initProductDetails() {
                 <span class="price-current-description">${formatPrice(product.priceCurrent)}</span>
               </div>
               <div class="container-form">
-                <form id="product-form" data-id="${product.id}" method="post" action="/comprar/">
+                <form id="product-form" data-id="${product.airtableId}" method="post" action="/comprar/">
                   <div class="quantity">
                     <button type="button" class="quantity-decrease">-</button>
                     <input type="number" name="quantity" value="1" min="1">

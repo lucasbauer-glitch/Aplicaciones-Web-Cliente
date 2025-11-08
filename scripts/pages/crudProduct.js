@@ -1,5 +1,6 @@
 import { obtenerProductos, borrarProducto } from "../core/metodos.js";
 
+
 export function normalizacion(productosResponse) {
   return productosResponse.records.map(producto => ({
     airtableId: producto.id,
@@ -147,4 +148,4 @@ export async function initCrudProduct() {
   }
 }
 
-initCrudProduct();
+

@@ -34,5 +34,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     case 'crudProduct':
       import('./pages/crudProduct.js').then(m => m.initCrudProduct());
       break;
+    case 'cart':
+      import('./pages/cartPage.js').then(m => m.initCartPage(cartModule));
+      break;
   }
 });

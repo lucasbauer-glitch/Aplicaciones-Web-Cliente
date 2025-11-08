@@ -2,15 +2,14 @@ import { renderFilterOptions } from '../components/filterList.js';
 import { createProductElement } from '../components/productCard.js';
 import { getUniqueValues } from "../core/utils.js";
 import { filteredProducts } from '../components/setupFilters.js';
-import { obtenerProductos } from '../core/metodos.js';
-import { normalizacion } from '../core/utils.js';
+import { getProducts } from '../core/productStore.js';
+
 
 
 
 export async function initAllProduct(cartModule) {
 
-  const productsData = await obtenerProductos();
-  const products = await normalizacion(productsData);
+  const products = await getProducts();
   
 
   function renderProducts(productList = products) {

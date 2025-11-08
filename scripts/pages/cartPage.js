@@ -1,20 +1,15 @@
 import { formatPrice } from "../core/utils.js";
-import { initCart } from "../cart.js";
-import { obtenerProductos } from "../core/metodos.js";
-import { normalizacion } from "../core/utils.js";
 
-const cartModule =  await initCart();
+export function initCartPage(cartModule) {
 const { showCartAlert } = cartModule;
-
 const cartContainer = document.getElementById("cart-container");
 const cartSummary = document.getElementById("cart-summary");
 
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 async function getProductStock(id) {
-  const productosResponse = await obtenerProductos();
-  const products = await normalizacion(productosResponse);
-  const product = products.find(p => p.id === id);
+  const products = cartModule.products;
+  const product = products.find(p => p.airtableId === id);
   return product ? product.stock : null;
 }
 
@@ -110,3 +105,4 @@ async function renderCart() {
 }
 
 renderCart();
+}

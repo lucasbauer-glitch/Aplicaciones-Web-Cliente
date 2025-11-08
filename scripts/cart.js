@@ -1,15 +1,11 @@
-//import { products } from "./productsData.js";
-import { obtenerProductos } from "./core/metodos.js";
-import { normalizacion } from "./core/utils.js";
-
-
+import { getProducts } from "./core/productStore.js";
 
 export async function initCart() {
   console.log("initCart ejecutado");
 
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
-  const productosResponse = await obtenerProductos();
-  const products = await normalizacion(productosResponse);
+  const products = await getProducts();
+
 
   function updateCartBadge() {
     const badge = document.querySelector(".cart-badge");
@@ -26,30 +22,43 @@ export async function initCart() {
 
     form.addEventListener("submit", (e) => {
       e.preventDefault();
+
       const id = form.dataset.id;
       const quantityInput = form.querySelector('input[name="quantity"]');
       const quantity = quantityInput ? parseInt(quantityInput.value) : 1;
+
       const product = products.find(p => p.airtableId === id);
       if (!product) return;
+
+      const stockDisponible = product.stock || 0;
       const existing = cart.find(item => item.id === id);
+      const cantidadActual = existing ? existing.quantity : 0;
+      const nuevaCantidad = cantidadActual + quantity;
+
+      if (nuevaCantidad > stockDisponible) {
+        showCartAlert(`Solo hay ${stockDisponible} unidades disponibles de "${product.title}".`);
+        return;
+      }
+
       if (existing) {
-        existing.quantity += quantity;
+        existing.quantity = nuevaCantidad;
       } else {
         cart.push({
           id: product.airtableId,
           title: product.title,
           quantity: quantity,
           priceCurrent: product.priceCurrent,
-          image: product.images[0]
+          image: product.images[0],
         });
       }
 
-      
       localStorage.setItem("cart", JSON.stringify(cart));
       updateCartBadge();
-      showCartAlert()
+      showCartAlert();
     });
   }
+
+
   document.addEventListener("DOMContentLoaded", updateCartBadge);
 
   function showCartAlert(message="Producto agregado al carrito"){
@@ -63,5 +72,5 @@ export async function initCart() {
       alertBox.classList.remove("show");
     }, 2000);
   }
-  return {addToCartHandler, updateCartBadge, showCartAlert, cart };
+  return {addToCartHandler, updateCartBadge, showCartAlert, cart, products};
 }

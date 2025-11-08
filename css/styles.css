@@ -1098,6 +1098,13 @@ tr:nth-child(even) {
   background-color: #c82333;
 }
 
+.row-crud-logo {
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  background-color: var(--header-background);
+  width: 100vw;
+}
 /*Tablet */
 @media (min-width: 501px) and (max-width: 1023px) {
   .head-nav {
