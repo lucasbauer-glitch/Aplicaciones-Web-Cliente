@@ -8,9 +8,10 @@ import { initFooter } from './components/footer.js';
 
 document.addEventListener("DOMContentLoaded", async () => {
   
+  let cartModule;
   const page = document.body.dataset.page;
   if (page !== 'login' && page !== 'crudProduct') {
-    const cartModule = await initCart();
+    cartModule = await initCart();
     initHeader();
     initNavBar();
     searchproducts();
@@ -19,13 +20,13 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
   switch (page) {
     case 'index':
-      (await import('./pages/index.js').then(m => m.initIndex()));
+      import('./pages/index.js').then(m => m.initIndex(cartModule));
       break;
     case 'allProduct':
-      import('./pages/allProduct.js').then(m => m.initAllProduct());
+      import('./pages/allProduct.js').then(m => m.initAllProduct(cartModule));
       break;
     case 'description':
-      import('./product.js').then(m => m.initProductDetails());
+      import('./product.js').then(m => m.initProductDetails(cartModule));
       break; 
     case 'login':
       import('./pages/login.js').then(m => m.initLogin());

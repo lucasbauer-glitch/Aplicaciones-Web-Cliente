@@ -6,20 +6,39 @@ const cartModule = await initCart();
 
 const params = new URLSearchParams(window.location.search);
 const id = params.get("id");
-const product = await obtenerUnProducto(id);
+const response = await obtenerUnProducto(id);
 
+export async function normalizacionUnProducto(response) {
+  try {
+    const producto = response.fields;
+    return {
+      airtableId: producto.id,
+      link: producto.link,
+      title: producto.title,
+      images: (producto.images || "")
+        .split(",")
+        .map(url => url.trim())
+        .filter(url => url),
+      priceCurrent: producto.priceCurrent,
+      priceOld: producto.priceOld,
+      discount: producto.discount,
+      brand: producto.brand,
+      category: producto.category,
+      id: producto.clientID,
+      stock: producto.stock,
+    };
+    
+  } catch (error) {
+    console.error("Error al normalizar los productos:", error);
+    return [];
+  }
+}
+
+const product = await normalizacionUnProducto(response);
 
 export function initProductDetails() {
   function renderProductDescription(product) {
-
-    const images = Array.isArray(product.images)
-    if (typeof product.images === "string") {
-    return product.images
-      .split(",")
-      .map(img => img.trim())
-      .filter(img => img.length > 0);
-    }
-
+    
     return `
       <section class="description-section">
         <div class="container-description">
@@ -28,11 +47,11 @@ export function initProductDetails() {
               <div class="product-images">
                 <div class="main-image">
                   <img id="description-section-product-image" 
-                    src="${images[0]}" 
+                    src="${product.images[0]}" 
                     alt="${product.title}">
                 </div>
                 <div class="thumbnails">
-                  ${images
+                  ${product.images
                     .map(
                       (img, index) =>
                         `<img src="${img}" alt="Miniatura ${index + 1}" class="thumbnail">`
@@ -70,7 +89,7 @@ export function initProductDetails() {
 
   
   if (product) {
-    document.getElementById("product-container").innerHTML = renderProductDescription(product.fields);
+    document.getElementById("product-container").innerHTML = renderProductDescription(product);
 
     const mainImage = document.getElementById("description-section-product-image");
     const thumbs = document.querySelectorAll(".thumbnail");

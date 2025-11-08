@@ -1,4 +1,3 @@
-import { initCart } from '../cart.js';
 import { renderFilterOptions } from '../components/filterList.js';
 import { createProductElement } from '../components/productCard.js';
 import { getUniqueValues } from "../core/utils.js";
@@ -8,11 +7,11 @@ import { normalizacion } from '../core/utils.js';
 
 
 
-export async function initAllProduct() {
+export async function initAllProduct(cartModule) {
 
   const productsData = await obtenerProductos();
   const products = await normalizacion(productsData);
-  const cartModule = await initCart();
+  
 
   function renderProducts(productList = products) {
     const container = document.querySelector(".all-product-container");
@@ -50,8 +49,6 @@ export async function initAllProduct() {
       modal.style.display = "none";
     }  
   });
-  const forms = document.querySelectorAll(".product-form");
-  forms.forEach(cartModule.addToCartHandler);
   const categories = getUniqueValues("category");
   const brands = getUniqueValues("brand");
   renderFilterOptions(filtersContainer, "category", "Categoría", categories); 

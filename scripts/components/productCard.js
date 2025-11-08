@@ -1,6 +1,6 @@
 import { formatPrice } from '../core/utils.js';
 
-export function createProductElement({ title, images, priceCurrent, priceOld, discount, airtableId: id }) {
+export function createProductElement({ title, images, priceCurrent, priceOld, discount, airtableId }) {
     const product = document.createElement("div");
     product.classList.add("product");
 
@@ -8,7 +8,7 @@ export function createProductElement({ title, images, priceCurrent, priceOld, di
     imageDiv.classList.add("product-image");
 
     const linkImg = document.createElement("a");
-    linkImg.setAttribute("href", `description.html?id=${id}`);
+    linkImg.setAttribute("href", `description.html?id=${airtableId}`);
     linkImg.setAttribute("title", title);
 
     const img = document.createElement("img");
@@ -24,7 +24,7 @@ export function createProductElement({ title, images, priceCurrent, priceOld, di
     infoDiv.classList.add("product-info");
 
     const linkTitle = document.createElement("a");
-    linkTitle.setAttribute("href", `description.html?id=${id}`);
+    linkTitle.setAttribute("href", `description.html?id=${airtableId}`);
 
     const h3 = document.createElement("h3");
     h3.classList.add("product-name");
@@ -54,13 +54,13 @@ export function createProductElement({ title, images, priceCurrent, priceOld, di
 
     const form = document.createElement("form");
     form.classList.add("product-form");
-    form.setAttribute("data-id", id);
+    form.setAttribute("data-id", airtableId);
     form.setAttribute("method", "post");
 
     const input = document.createElement("input");
     input.setAttribute("type", "hidden");
     input.setAttribute("name", "add_to_cart");
-    input.setAttribute("value", id);
+    input.setAttribute("value", airtableId);
 
     const button = document.createElement("button");
     button.setAttribute("type", "submit");

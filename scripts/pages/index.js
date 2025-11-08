@@ -1,9 +1,9 @@
 import { slider } from '../components/slider.js';
 import {obtenerProductos} from '../core/metodos.js';
-import { initCart } from '../cart.js';
+
 import { createProductElement } from '../components/productCard.js';
 
-const cartModule = await initCart();
+
 
 function normalizacion(productosResponse) {
   return productosResponse.records.map(producto => ({
@@ -24,7 +24,7 @@ function normalizacion(productosResponse) {
   }));
 }
 
-export async function initIndex() {
+export async function initIndex(cartModule) {
   
     const container = document.querySelector(".products-slid");
     if (!container) return;
@@ -56,8 +56,12 @@ export async function initIndex() {
         });
       }
     
+      console.log("initIndex ejecutado");
       const forms = document.querySelectorAll(".product-form");
-      forms.forEach(cartModule.addToCartHandler);
+      console.log("Formularios detectados:", forms.length);
+      console.log("cartModule:", cartModule);
+      console.log("Tiene addToCartHandler:", typeof cartModule.addToCartHandler);
+      forms.forEach(form => cartModule.addToCartHandler(form));
     } catch (err) {
       console.error("Error cargando productos:", err);
       container.innerHTML = "<p class='error-text'>No se pudieron cargar los productos.</p>";

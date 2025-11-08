@@ -5,6 +5,8 @@ import { normalizacion } from "./core/utils.js";
 
 
 export async function initCart() {
+  console.log("initCart ejecutado");
+
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
   const productosResponse = await obtenerProductos();
   const products = await normalizacion(productosResponse);
@@ -24,32 +26,12 @@ export async function initCart() {
 
     form.addEventListener("submit", (e) => {
       e.preventDefault();
-
       const id = form.dataset.id;
       const quantityInput = form.querySelector('input[name="quantity"]');
       const quantity = quantityInput ? parseInt(quantityInput.value) : 1;
-      const product = products.find(p => p.id === id);
+      const product = products.find(p => p.airtableId === id);
       if (!product) return;
-
-      if (quantityInput) {
-      quantityInput.max = product.stock; 
-      }
-
       const existing = cart.find(item => item.id === id);
-      const totalRequested = existing
-      ? existing.quantity + quantity
-      : quantity;
-
-      if (totalRequested > product.stock) {
-        const remaining = product.stock - (existing?.quantity || 0);
-
-        showCartAlert(
-          remaining > 0
-            ? `Solo quedan ${remaining} unidades disponibles de "${product.title}".`
-            : `No hay más stock disponible de "${product.title}".`
-        );
-        return;
-      }
       if (existing) {
         existing.quantity += quantity;
       } else {
