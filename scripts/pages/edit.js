@@ -1,6 +1,20 @@
 import { obtenerUnProducto, editarProducto, crearProducto} from "../core/metodos.js";
 
+
 export async function initEditForm() {
+
+  function showCartAlert(message="Producto agregado al carrito"){
+    const alertBox = document.getElementById("cart-alert");
+    if(!alertBox) return;
+
+    alertBox.textContent = message;
+    alertBox.classList.add("show");
+
+    setTimeout(()=>{
+      alertBox.classList.remove("show");
+    }, 2000);
+  }
+
   const params = new URLSearchParams(window.location.search);
   const id = params.get("id");
   const form = document.getElementById("form-edit");
@@ -19,8 +33,8 @@ export async function initEditForm() {
     const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries());
     await editarProducto(id, data);
-    alert("Producto actualizado correctamente");
-    window.location.href = "crudProduct.html";
+    showCartAlert("Producto actualizado correctamente");
+    setTimeout(() => window.location.href = "crudProduct.html", 2000);
   });
   } else {
     form.addEventListener("submit", async (e) => {
@@ -28,11 +42,10 @@ export async function initEditForm() {
       const formData = new FormData(form);
       const data = Object.fromEntries(formData.entries());
       await crearProducto(data);
-      alert("Producto creado correctamente");
-      window.location.href = "crudProduct.html";  
+      showCartAlert("Producto creado correctamente");
+      setTimeout(() => window.location.href = "crudProduct.html", 2000);
     });
   }
-
 }
 
 initEditForm();

@@ -48,6 +48,7 @@ function renderCrudProduct(productos) {
     img.appendChild(imageElement);
 
     const nombre = document.createElement("td");
+    nombre.classList.add("producto-nombre");
     nombre.datalabel = "Nombre";
     nombre.textContent = p.title;
 
