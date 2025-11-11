@@ -18,7 +18,7 @@ export async function searchproducts() {
       const a = document.createElement("a");
       
       a.textContent = element.title;
-      a.href = `description.html?id=${element.id}`;
+      a.href = `description.html?id=${element.airtableId}`;
       
       li.appendChild(a);
       resultados.appendChild(li);
