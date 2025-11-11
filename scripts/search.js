@@ -1,8 +1,9 @@
-import { products } from './productsData.js';
+import { getProducts } from "./core/productStore.js";
 
-export function searchproducts() {
-  const listProducts = products;
+export async function searchproducts() {
+  const listProducts = await getProducts();
   const search = document.querySelector(".search-input");
+  if (!search) return;
   const resultados = document.querySelector(".resultados");
 
   function buscar (texto) {

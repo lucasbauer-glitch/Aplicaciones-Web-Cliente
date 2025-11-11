@@ -54,4 +54,3 @@ export async function initAllProduct(cartModule) {
   renderFilterOptions(filtersContainer, "brand", "Marca", brands);
   filteredProducts(".filters", renderProducts);
 }
-
