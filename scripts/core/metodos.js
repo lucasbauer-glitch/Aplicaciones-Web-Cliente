@@ -13,7 +13,7 @@ export async function obtenerProductos() {
     });
 
     const datos = await respuesta.json();
-    console.log('Productos:', datos);
+    //console.log('Productos:', datos);
     return datos;
 
   } catch (error) {

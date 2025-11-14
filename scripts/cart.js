@@ -1,7 +1,7 @@
 import { getProducts } from "./core/productStore.js";
 
 export async function initCart() {
-  console.log("initCart ejecutado");
+  //console.log("initCart ejecutado");
 
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
   const products = await getProducts();

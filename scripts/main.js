@@ -37,5 +37,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     case 'cart':
       import('./pages/cartPage.js').then(m => m.initCartPage(cartModule));
       break;
+    case 'contact':
+      import('./pages/contactPage.js').then(m => m.initContactPage(cartModule));
+      break;
   }
 });
