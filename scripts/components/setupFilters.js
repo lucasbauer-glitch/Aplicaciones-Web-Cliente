@@ -1,9 +1,10 @@
-import { products } from "../productsData.js";
-export function filteredProducts(containerSelector, renderProductsFn) {
+import { getProducts } from '../core/productStore.js';
+
+export async function filteredProducts(containerSelector, renderProductsFn) {
     const container = document.querySelector(containerSelector);
     if(!container) return;
 
-    container.addEventListener("click", (e) => {
+    container.addEventListener("click", async (e) => {
         const button = e.target.closest(".filter-button");
         if(button) {
             const list = button.closest("ul");
@@ -11,9 +12,9 @@ export function filteredProducts(containerSelector, renderProductsFn) {
             const filterType = list.dataset.filterType;
             const filterValue = button.dataset.filter;
 
-            let filtered = products;
+            let filtered = await getProducts();
             if (filterValue !== "all") {
-                filtered = products.filter(p => p[filterType] === filterValue);
+                filtered = filtered.filter(p => p[filterType] === filterValue);
             }
             renderProductsFn(filtered);
             return;
