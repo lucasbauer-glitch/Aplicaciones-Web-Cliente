@@ -48,9 +48,9 @@ export async function initAllProduct(cartModule) {
       modal.style.display = "none";
     }  
   });
-  const categories = getUniqueValues("category");
-  const brands = getUniqueValues("brand");
+  const categories = getUniqueValues("category", products);
+  const brands = getUniqueValues("brand", products);
   renderFilterOptions(filtersContainer, "category", "Categoría", categories); 
   renderFilterOptions(filtersContainer, "brand", "Marca", brands);
-  filteredProducts(".filters", renderProducts);
+  filteredProducts(".filters", renderProducts, products);
 }

@@ -1,8 +1,16 @@
 import { getProducts } from '../core/productStore.js';
-
-export async function filteredProducts(containerSelector, renderProductsFn) {
+export async function filteredProducts(containerSelector, renderProductsFn, filtered) {
     const container = document.querySelector(containerSelector);
     if(!container) return;
+    
+
+    container.addEventListener("input", async (e) => {
+        const input = e.target.closest("input");
+        if(!input) return;
+        let inputValue = input.value.toLowerCase();
+        filtered = filtered.filter(p => p.title.toLowerCase().includes(inputValue));
+        renderProductsFn(filtered);
+    });
 
     container.addEventListener("click", async (e) => {
         const button = e.target.closest(".filter-button");
@@ -12,9 +20,12 @@ export async function filteredProducts(containerSelector, renderProductsFn) {
             const filterType = list.dataset.filterType;
             const filterValue = button.dataset.filter;
 
-            let filtered = await getProducts();
+            
             if (filterValue !== "all") {
                 filtered = filtered.filter(p => p[filterType] === filterValue);
+            }
+            else {
+                filtered = await getProducts();
             }
             renderProductsFn(filtered);
             return;

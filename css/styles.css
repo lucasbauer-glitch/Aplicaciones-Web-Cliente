@@ -75,7 +75,7 @@ body {
 .search-col {
   position: relative;
   width: 100%;
-  max-width: 400px;
+  max-width: 450px;
 }
 
 .search-form {
@@ -1215,7 +1215,10 @@ tr:nth-child(even) {
   width: 100vw;
 }
 /*Tablet */
-@media (min-width: 501px) and (max-width: 1023px) {
+@media (min-width: 501px) and (max-width: 1024px) {
+  .search-col {
+    max-width: 250px;
+  }
   .head-nav {
     gap: 12px;
     height: auto;
