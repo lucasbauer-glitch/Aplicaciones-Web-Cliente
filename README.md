@@ -23,8 +23,10 @@ Para ejecutar este proyecto de forma local mediante contenedores, necesitas tene
    cd [AppWeb]
 2. **Construcción de la imagen Docker:**
     En una terminal de bash correr los siguientes comandos
+    ```bash
     docker build -t app .
 3. **Ejecución del contenedor:**
+    ```bash
     docker run -d -p 8080:80 app
 4. **Verificación:**
     Abre tu navegador web e ingresa a http://localhost:8080
